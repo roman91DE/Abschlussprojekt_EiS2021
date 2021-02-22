@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     ConsoleWindow.cpp \
     alien.cpp \
+    gamewindow.cpp \
     main.cpp \
     mainmenu.cpp \
     map.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     ConsoleWindow.h \
     alien.h \
+    gamewindow.h \
     mainmenu.h \
     map.h \
     player.h
@@ -30,3 +32,8 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    txt_maps/level1.txt \
+    txt_maps/level2.txt \
+    txt_maps/level3.txt

@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="playLevel1">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>260</y>
-      <width>89</width>
-      <height>25</height>
+      <x>100</x>
+      <y>220</y>
+      <width>151</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -30,10 +30,10 @@
    <widget class="QPushButton" name="playLevel2">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>260</y>
-      <width>89</width>
-      <height>25</height>
+      <x>320</x>
+      <y>220</y>
+      <width>151</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -43,10 +43,10 @@
    <widget class="QPushButton" name="playLevel3">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>260</y>
-      <width>89</width>
-      <height>25</height>
+      <x>530</x>
+      <y>220</y>
+      <width>151</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -56,11 +56,18 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>40</y>
-      <width>411</width>
+      <x>160</x>
+      <y>50</y>
+      <width>471</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Herculanum</family>
+      <pointsize>48</pointsize>
+      <italic>true</italic>
+     </font>
     </property>
     <property name="text">
      <string>Let's Play Pacman!</string>
@@ -69,14 +76,27 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>350</y>
-      <width>91</width>
-      <height>21</height>
+      <x>320</x>
+      <y>410</y>
+      <width>151</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>310</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Self Made Level</string>
     </property>
    </widget>
   </widget>
