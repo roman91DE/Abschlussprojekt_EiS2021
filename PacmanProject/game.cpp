@@ -50,3 +50,21 @@ void Game::update() {
         map->vec[player->getYPosition()][player->getXPosition()] = ' ';
     }
 }
+
+void Game::movePlayer(int userInput) {
+    int x = player->getXPosition();
+    int y = player->getYPosition();
+    if (userInput == 1) { 
+        if (map->isFree(x-1, y)) { player->moveLeft(); }
+    }
+    else if (userInput == 2) { 
+        if (map->isFree(x+1, y)) { player->moveRight(); }
+    }
+    else if (userInput == 3) { 
+        if (map->isFree(x, y-1)) { player->moveUp(); }
+    }
+    else if (userInput == 4) { 
+        if (map->isFree(x, y+1)) { player->moveDown(); }
+    }
+    // else: keep moving ...
+}
