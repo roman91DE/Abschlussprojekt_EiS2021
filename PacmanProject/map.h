@@ -1,11 +1,20 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <vector>
+#include <fstream>
+#include <string>
 
-class map
-{
-public:
-    map();
+
+class Map {
+    private:
+        std::vector < std::vector<char> > vec;
+    public:
+        Map(std::string filepath);
+        ~Map();
+        bool isFree(int xPosition, int yPosition);
+        // for debugging only
+        void printToStdOut();
 };
 
 #endif // MAP_H

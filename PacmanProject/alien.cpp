@@ -36,6 +36,7 @@ char stupidAlien::getRepresentation()  { return representation; }
 
 char stupidAlien::getDirection() {
     // zufallsgenerator: 1=hoch; 2=runter; 3=links; 4=rechts
+    // muss ich den dokumentieren?? später checken
     QRandomGenerator qRand;
     while (true) {
         int zv = qRand.bounded(1,5);
