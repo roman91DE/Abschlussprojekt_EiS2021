@@ -7,6 +7,8 @@ class gameWindow : public ConsoleWindow
 {
     public:
         gameWindow();
+        void onRefresh();
+
 };
 
 #endif // GAMEWINDOW_H

@@ -1,6 +1,9 @@
 #include "gamewindow.h"
 
-gameWindow::gameWindow()
-{
+gameWindow::gameWindow() {
+
+}
+
+void gameWindow::onRefresh() {
 
 }
