@@ -3,13 +3,18 @@
 #include <QRandomGenerator>
 
 Alien::Alien(int _xPos, int _yPos, Map *_map)
-    : xPosition(_xPos), yPosition(_yPos), map(_map) {}
+    : xPosition(_xPos), yPosition(_yPos), map(_map), paused(true) {}
 
 
 int Alien::getXPosition()       const { return xPosition; }
 int Alien::getYPosition()       const { return yPosition; }
 
 void Alien::move() {
+    if (paused) {
+        paused = false;
+        return;
+    }
+    paused = true;
     char direction = getDirection();
     if      (direction == 'u') { moveUp(); }
     else if (direction == 'd') { moveDown(); }

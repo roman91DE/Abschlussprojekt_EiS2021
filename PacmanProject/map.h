@@ -15,6 +15,8 @@ class Map {
         bool isFree(int xPosition, int yPosition);
         // for debugging only
         void printToStdOut();
+        
+    friend class Game;
 };
 
 #endif // MAP_H
