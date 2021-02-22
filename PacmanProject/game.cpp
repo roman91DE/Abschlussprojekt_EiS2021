@@ -12,13 +12,16 @@ Game::Game(std::string filepathMap) : roundCount(0) {
             temp = map->vec[iy][ix];
             if      (temp == '*')   {
                  player = new Player(ix, iy); 
+                 map->vec[iy][ix] = ' ';
             }
             else if (temp == 'g')   {
                 aliens.push_back(new stupidAlien(ix, iy, map));
+                map->vec[iy][ix] = '.';
             }
             // noch nicht implementiert
             // else if (temp == 'G') {
             //     aliens.push_back(new smartAlien(ix, iy, map));
+            //     map->vec[iy][ix] = ' ';
             // }
         }
     }
@@ -54,7 +57,7 @@ void Game::update() {
 void Game::movePlayer(int userInput) {
     int x = player->getXPosition();
     int y = player->getYPosition();
-    if (userInput == 1) { 
+    if      (userInput == 1) { 
         if (map->isFree(x-1, y)) { player->moveLeft(); }
     }
     else if (userInput == 2) { 
@@ -66,5 +69,14 @@ void Game::movePlayer(int userInput) {
     else if (userInput == 4) { 
         if (map->isFree(x, y+1)) { player->moveDown(); }
     }
+    // noch nicht implementiert:
     // else: keep moving ...
 }
+
+
+void Game::moveAliens() {
+    for (unsigned int i = 0; i < aliens.size(); i++) {
+        aliens[i]->move();
+    }
+}
+

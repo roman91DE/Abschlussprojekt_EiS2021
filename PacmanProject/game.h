@@ -19,13 +19,10 @@ class Game {
         ~Game();
         bool alive();
         void update();
-        // user input: 1=links; 2=rechts, 3=oben, 4=unten
-        void movePlayer(int userInput);
         void moveAliens();
+        // kodierung user input: 1=links; 2=rechts, 3=oben, 4=unten
+        void movePlayer(int userInput);
+
 };
-
-
-
-
 
 #endif

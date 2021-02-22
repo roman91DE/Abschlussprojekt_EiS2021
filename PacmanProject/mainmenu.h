@@ -18,5 +18,9 @@ public:
 private:
     Ui::mainMenu *ui;
 
+public slots:
+    void slotStartLevel(std::string mapFilePath);
+
+
 };
 #endif // MAINMENU_H
