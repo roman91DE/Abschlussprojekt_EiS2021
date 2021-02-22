@@ -2,9 +2,12 @@
 #include <iostream>
 
 Map::Map(std::string filepath) {
-    std::ifstream fileStream(filepath);
+    std::fstream fileStream;
+    fileStream.open(filepath);
+    if (! fileStream.is_open()) { std::cout << "Can't open File !\n"; return; }
     char buffer;
-    while(fileStream) {
+    // fstream später noch mit while Schleife implementieren
+    for (unsigned int i = 0; i < 28; i++) {
         std::vector <char> line;
         while (true) {
             buffer = fileStream.get();
@@ -15,6 +18,7 @@ Map::Map(std::string filepath) {
             else { line.push_back(buffer); }
             }
         }
+        fileStream.close();
     }
 
 Map::~Map() {}
