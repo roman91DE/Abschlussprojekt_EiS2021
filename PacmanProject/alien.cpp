@@ -5,6 +5,8 @@
 Alien::Alien(int _xPos, int _yPos, Map *_map)
     : xPosition(_xPos), yPosition(_yPos), map(_map), paused(true) {}
 
+Alien::~Alien(){};
+
 
 int Alien::getXPosition()       const { return xPosition; }
 int Alien::getYPosition()       const { return yPosition; }
@@ -33,8 +35,10 @@ void Alien::moveRight()    { xPosition++; }
 // stupid Aliens Subclass
 
 stupidAlien::stupidAlien(int _xPos, int _yPos, Map *_map)
-    : Alien(_xPos,_yPos, _map), representation('g') {}
+    : Alien(_xPos, _yPos, _map), representation('g') {}
 
+
+stupidAlien::~stupidAlien() {};
 
 char stupidAlien::getRepresentation()  { return representation; }
 

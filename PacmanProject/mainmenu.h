@@ -22,7 +22,7 @@ Q_OBJECT
 
 
     public slots:
-        void slotStartDefaultLevel(int lvlNum);
+        // void slotStartDefaultLevel(int lvlNum);
         // void slotCustomStartLevel(std::string mapFilePath);
 
 

@@ -31,7 +31,7 @@ class stupidAlien : public Alien {
         char representation;
     public:
         stupidAlien(int _xPos, int _yPos, Map *_map);
-        ~stupidAlien();
+        virtual ~stupidAlien();
         virtual char getDirection() ;
         virtual char getRepresentation() ;
 };
