@@ -14,11 +14,13 @@ gameWindow::~gameWindow() {
 
 void gameWindow::drawCurrentState() {
     // draw score to console
-    int buffer = 1;
+    int buffer = 4;
     QString score_string = (
     "Score: " +  QString::number(current_game->score)
     + "/" + QString::number(current_game->total_pill_count));
-    writeString(24,0,score_string.toStdString());
+    writeString(12,1,score_string.toStdString());
+    QString time_string = "Timer:" + (QString::number(current_game->roundCount/5));
+    writeString(42,1,time_string.toStdString());
 
     // draw map to console
     for (unsigned int iy = 0; iy < current_game->map->vec.size(); iy++) {
@@ -63,8 +65,10 @@ void gameWindow::onRefresh() {
 
     // check if level completed
     if (current_game->level_complete() && running) {
-        QString str = "You completed the Level!";
-        endGame(str);
+        int timeToFinish = current_game->roundCount/5;
+        QString str = "You completed the Level!\n";
+        str += "Total Time = " + (QString::number(timeToFinish)) + "Seconds";
+        endGame((str));
     }
 
     // update current state of the game
