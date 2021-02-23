@@ -1,7 +1,7 @@
 #include "player.h"
 
 Player::Player(int _xPos, int _yPos)
-    : xPosition(_xPos), yPosition(_yPos), isAlive(true), representation('*')  {}
+    : xPosition(_xPos), yPosition(_yPos), representation('*')  {}
 
 Player::~Player() {}
 

@@ -6,7 +6,6 @@ class Player{
     private:
         int xPosition;
         int yPosition;
-        bool isAlive;
         char representation;
     public:
         Player(int _xPos, int _yPos);

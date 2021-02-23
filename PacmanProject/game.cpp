@@ -4,7 +4,7 @@
 #include "map.h"
 
 
-Game::Game(std::string filepathMap) : roundCount(0), score(1) {
+Game::Game(std::string filepathMap) : roundCount(0), score(0), total_pill_count(0) {
     map = new Map(filepathMap);
     char temp;
     for(unsigned int iy = 0; iy < map->vec.size(); iy++) {
@@ -14,6 +14,7 @@ Game::Game(std::string filepathMap) : roundCount(0), score(1) {
             if      (temp == '*')   {
                  player = new Player(ix, iy); 
                  map->vec[iy][ix] = ' ';
+                 total_pill_count++;
             }
             // pillen zählen
             else if (temp=='.') { total_pill_count++; }
