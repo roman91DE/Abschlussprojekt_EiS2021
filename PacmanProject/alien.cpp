@@ -143,7 +143,8 @@ char smartAlien::getDirection() {
 //        std::cout << distances[i].distance << " - " << distances[i].direction << std::endl;
 //    }
     std::cout << std::endl <<
-                 "player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
+                 "player: "<< x_player << "/" << y_player << '\n'
+                 //"player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
               << "alien: " << getXPosition() << "/" << getYPosition() << '\n';
     //
     for (unsigned int k = 0; k < distances.size(); k++) {

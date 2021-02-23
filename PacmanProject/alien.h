@@ -52,7 +52,7 @@ class smartAlien : public Alien {
         smartAlien(int _xPos, int _yPos, Map *_map, Player *_playerPtr);
         ~smartAlien();
         virtual char getDirection();
-        char getRepresentation();
+        virtual char getRepresentation();
         static double getDistance(int x_player, int y_player, int x_alien, int y_alien);
 };
 
