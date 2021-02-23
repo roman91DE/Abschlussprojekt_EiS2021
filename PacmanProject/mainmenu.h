@@ -27,7 +27,7 @@ Q_OBJECT
         void slotStartLevel1();
         void slotStartLevel2();
         void slotStartLevel3();
-        // void slotCustomStartLevel(std::string mapFilePath);
+        // void slotStartCustomLevel(std::string mapFilePath);
 
 
 };

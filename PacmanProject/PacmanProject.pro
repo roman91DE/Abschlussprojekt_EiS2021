@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     ConsoleWindow.cpp \
     alien.cpp \
+    game.cpp \
     gamewindow.cpp \
     main.cpp \
     mainmenu.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     ConsoleWindow.h \
     alien.h \
+    game.h \
     gamewindow.h \
     mainmenu.h \
     map.h \
