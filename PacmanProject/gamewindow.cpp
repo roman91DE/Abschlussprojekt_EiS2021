@@ -5,6 +5,7 @@
 
 gameWindow::gameWindow(std::string lvl_ptr) {
     current_game = new Game(lvl_ptr);
+    running = true;
 }
 
 gameWindow::~gameWindow() {
@@ -42,14 +43,6 @@ void gameWindow::drawCurrentState() {
 }
 
 void gameWindow::onRefresh() {
-
-    if (!current_game->alive()) {
-        QMessageBox qMB(this);
-        qMB.setText("You are Dead!");
-        qMB.exec();
-        this->close();
-
-    }
     clear();
     drawCurrentState();
     current_game->moveAliens();
@@ -58,15 +51,27 @@ void gameWindow::onRefresh() {
     if (getPressedKey() == CURSOR_UP)       { current_game->movePlayer(3); }
     if (getPressedKey() == CURSOR_DOWN)     { current_game->movePlayer(4);}
 
+    // check if player died
+    if (!current_game->alive() && running) {
+        QString str = "You are Dead!";
+        endGame(str);
+
+    }
+
     // check if level completed
-    if (current_game->level_complete()) {
-        QMessageBox qMB(this);
-        qMB.setText("You completed the Level!");
-        qMB.exec();
-        this->close();
+    if (current_game->level_complete() && running) {
+        QString str = "You completed the Level!";
+        endGame(str);
     }
     // update current state of the game
     current_game->update();
 
+}
 
+void gameWindow::endGame(QString &str) {
+    running = false;
+    QMessageBox qMB(this);
+    qMB.setText(str);
+    qMB.exec();
+    this->close();
 }
