@@ -18,7 +18,9 @@ Q_OBJECT
 
     private:
         Ui::mainMenu *ui;
-        std::string lvl1_path, lvl2_path, lvl3_path;
+        std::string lvl1_path;
+        std::string lvl2_path;
+        std::string lvl3_path;
         gameWindow* gameWindowPtr;
 
 

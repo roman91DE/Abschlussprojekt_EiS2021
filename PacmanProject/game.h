@@ -3,10 +3,9 @@
 
 #include <vector>
 #include <string>
-
-class Player;
-class Alien;
-class Map;
+#include "player.h"
+#include "alien.h"
+#include "map.h"
 
 class Game {
     public:

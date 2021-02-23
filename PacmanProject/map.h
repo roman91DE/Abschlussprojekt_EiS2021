@@ -17,6 +17,7 @@ class Map {
         void printToStdOut();
 
     friend class Game;
+    friend class gameWindow;
 };
 
 #endif // MAP_H
