@@ -14,30 +14,30 @@ gameWindow::~gameWindow() {
 
 void gameWindow::drawCurrentState() {
     // draw score to console
-    int buffer = 4;
+    int buffer = 1;
     QString score_string = (
-    "current Score: " +  QString::number(current_game->score)
+    "Score: " +  QString::number(current_game->score)
     + "/" + QString::number(current_game->total_pill_count));
-    writeString(0,1,score_string.toStdString());
+    writeString(24,0,score_string.toStdString());
 
     // draw map to console
-    for (unsigned int iy = 0+buffer-1; iy < current_game->map->vec.size()+buffer; iy++) {
+    for (unsigned int iy = 0; iy < current_game->map->vec.size(); iy++) {
         for (unsigned int ix = 0; ix < current_game->map->vec[iy].size(); ix++) {
-            setCharacter(ix,iy,  current_game->map->vec[iy][ix]);
+            setCharacter(ix,iy+buffer,  current_game->map->vec[iy][ix]);
         }
     }
     // draw player to console
     int x_player = current_game->player->getXPosition();
     int y_player = current_game->player->getYPosition();
     char repr_player = current_game->player->getRepresentation();
-    setCharacter(x_player, y_player, repr_player);
+    setCharacter(x_player, y_player+buffer, repr_player);
 
     // draw aliens to console
     for (unsigned int i = 0; i < current_game->aliens.size(); i++) {
         int x_alien = current_game->aliens[i]->getXPosition();
         int y_alien = current_game->aliens[i]->getYPosition();
         char repr_alien =  current_game->aliens[i]->getRepresentation();
-        setCharacter(x_alien, y_alien, repr_alien);
+        setCharacter(x_alien, y_alien+buffer, repr_alien);
     }
 
 }
