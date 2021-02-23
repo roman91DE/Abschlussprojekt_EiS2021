@@ -2,12 +2,18 @@
 #define GAMEWINDOW_H
 
 #include "ConsoleWindow.h"
+#include "map.h"
 
 class gameWindow : public ConsoleWindow
 {
+private:
+        Map* current_map;
+
     public:
-        gameWindow();
+        gameWindow(std::string lvl_ptr);
+        ~gameWindow();
         void onRefresh();
+
 
 };
 
