@@ -4,7 +4,7 @@
 mainMenu::mainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainMenu){
     ui->setupUi(this);
     // relative paths!
-    lvl1_path = "/home/roman/EIS_Projektarbeit/rohoehn/PacmanProject/txt_maps/level1.txt";// /txt_maps/level1.txt";
+    lvl1_path = "/home/roman/EIS_Projektarbeit/rohoehn/PacmanProject/txt_maps/level1.txt";
     lvl2_path = "/home/roman/EIS_Projektarbeit/rohoehn/PacmanProject/txt_maps/level2.txt";
     lvl3_path = "/home/roman/EIS_Projektarbeit/rohoehn/PacmanProject/txt_maps/level3.txt";
     connect(ui->playLevel1, SIGNAL(clicked()), this, SLOT(slotStartLevel1()));
@@ -15,7 +15,7 @@ mainMenu::mainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainMenu){
 
 mainMenu::~mainMenu(){
     delete ui;
-    //delete gameWindowPtr;
+    delete gameWindowPtr;
 }
 
 
