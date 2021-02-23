@@ -49,16 +49,15 @@ Game::~Game() {
     delete map;
 }
 
-bool Game::alive() {
+bool Game::isAlive() {
     for (unsigned int i = 0; i < aliens.size(); i++) {
-        if ( aliens[i]->getXPosition() == player->getXPosition()
-                                &&
-             aliens[i]->getYPosition() == player->getXPosition() ) {
-                 return false;
-             }
+        if ( (aliens[i]->getXPosition() == player->getXPosition()) &&
+             (aliens[i]->getYPosition() == player->getYPosition()) )
+                { return false; }
     }
     return true;
 }
+
 
 void Game::update() {
     roundCount++;

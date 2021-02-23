@@ -18,7 +18,7 @@ class Game {
     public:
         Game(std::string filepathMap);
         ~Game();
-        bool alive();
+        bool isAlive();
         void update();
         bool level_complete();
         void moveAliens();

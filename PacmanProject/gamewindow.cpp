@@ -45,14 +45,15 @@ void gameWindow::drawCurrentState() {
 void gameWindow::onRefresh() {
     clear();
     drawCurrentState();
-    // check if player died
-    if (!current_game->alive() && running) {
-        QString str = "You are Dead!";
-        endGame(str);
-
-    }
 
     current_game->moveAliens();
+    // check if player died
+    if ((current_game->isAlive()==false) && running) {
+        QString str = "You are Dead!";
+        endGame(str);
+    }
+
+
     if (getPressedKey() == CURSOR_LEFT)     { current_game->movePlayer(1); }
     if (getPressedKey() == CURSOR_RIGHT)    { current_game->movePlayer(2); }
     if (getPressedKey() == CURSOR_UP)       { current_game->movePlayer(3); }
@@ -65,6 +66,7 @@ void gameWindow::onRefresh() {
         QString str = "You completed the Level!";
         endGame(str);
     }
+
     // update current state of the game
     current_game->update();
 
