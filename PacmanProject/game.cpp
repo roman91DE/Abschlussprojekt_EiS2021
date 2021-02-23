@@ -14,12 +14,9 @@ Game::Game(std::string filepathMap) : roundCount(0), score(0), total_pill_count(
             if      (temp == '*')   {
                  player = new Player(ix, iy); 
                  map->vec[iy][ix] = ' ';
-                 total_pill_count++;
             }
             // pillen zählen
             else if (temp=='.') { total_pill_count++; }
-
-
             // stupid Aliens erstellen
             else if (temp == 'g')   {
                 aliens.push_back(new stupidAlien(ix, iy, map));
@@ -83,8 +80,6 @@ void Game::movePlayer(int userInput) {
     else if (userInput == 4) { 
         if (map->isFree(x, y+1)) { player->moveDown(); }
     }
-    // noch nicht implementiert:
-    // else: keep moving ...
 }
 
 

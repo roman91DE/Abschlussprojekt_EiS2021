@@ -3,9 +3,10 @@
 #include <cstdlib>
 #include <random>
 #include <cmath>
+#include <iostream>
 
 Alien::Alien(int _xPos, int _yPos, Map *_map)
-    : xPosition(_xPos), yPosition(_yPos), map(_map), paused(true), cur_direction('l') {}
+    : xPosition(_xPos), yPosition(_yPos), map(_map), paused(true), cur_direction('u') {}
 
 Alien::~Alien(){};
 
@@ -93,10 +94,10 @@ smartAlien::~smartAlien() {}
 char smartAlien::getRepresentation() { return representation; }
 
 double smartAlien::getDistance(int x_player, int y_player, int x_alien, int y_alien) {
-    double left, right;
-    left    = std::pow((x_player - x_alien),2);
-    right   = std::pow((y_player - y_alien),2);
-    return (std::sqrt(left+right));
+    double left    = (x_player-x_alien)*(x_player-x_alien);
+    double right   = (y_player-y_alien)*(y_player-y_alien);
+    double sum = left+right;
+    return (std::sqrt(sum));
 }
 
 container::container(double _distance, char _direction)
@@ -137,33 +138,26 @@ char smartAlien::getDirection() {
     std::vector <container> distances = {cUp, cDown, cLeft, cRight};
     // sortiere aufsteigend nach distanz
     bubbleSortContainerVector(distances);
+    // debug
+//    for (unsigned int i = 0; i < distances.size(); i++) {
+//        std::cout << distances[i].distance << " - " << distances[i].direction << std::endl;
+//    }
+    std::cout << std::endl <<
+                 "player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
+              << "alien: " << getXPosition() << "/" << getYPosition() << '\n';
+    //
     for (unsigned int k = 0; k < distances.size(); k++) {
-        if (distances[k].direction == 'u') {
-//            if (k < 3) {
-//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
-//            }
-            if (map->isFree(x_alien, y_alien-1))  {return 'u';}
-        }
-        else if (distances[k].direction == 'd') {
-//            if (k < 3) {
-//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
-//            }
-            if (map->isFree(x_alien, y_alien+1)) { return 'd'; }
-        }
-        else if (distances[k].direction == 'l') {
-//            if (k < 3) {
-//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
-//            }
-            if (map->isFree(x_alien-1, y_alien)) { return 'l'; }
-        }
-        else if (distances[k].direction == 'r') {
-//            if (k < 3) {
-//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
-//            }
-            if (map->isFree(x_alien+1, y_alien)) { return 'r' ; }
-        }
+        int x_alien_temp  = getXPosition();
+        int y_alien_temp  = getYPosition();
+        char dir = '!';
+        if      (distances[k].direction == 'u') { y_alien_temp--; dir = 'u'; }
+        else if (distances[k].direction == 'd') { y_alien_temp++; dir = 'd'; }
+        else if (distances[k].direction == 'l') { x_alien_temp--; dir = 'l'; }
+        else if (distances[k].direction == 'r') { x_alien_temp++; dir = 'r'; }
+        if (map->isFree(x_alien_temp, y_alien_temp) == true)    { return dir;}
     }
     return '!';
 }
+
 
 
