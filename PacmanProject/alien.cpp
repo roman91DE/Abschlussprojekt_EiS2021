@@ -2,6 +2,7 @@
 #include "map.h"
 #include <cstdlib>
 #include <random>
+#include <cmath>
 
 Alien::Alien(int _xPos, int _yPos, Map *_map)
     : xPosition(_xPos), yPosition(_yPos), map(_map), paused(true), cur_direction('l') {}
@@ -23,6 +24,8 @@ void Alien::move() {
     else if (direction == 'd') { moveDown(); }
     else if (direction == 'l') { moveLeft(); }
     else if (direction == 'r') { moveRight(); }
+    // dont move alien
+    else if (direction == '!') { return; }
 
 }
 
@@ -77,13 +80,90 @@ char stupidAlien::getDirection() {
                 return 'r';
             }
         }
-
     }
 }
 
 
+smartAlien::smartAlien(int _xPos, int _yPos, Map *_map, Player *_playerPtr)
+    : Alien(_xPos, _yPos, _map), representation('G'), playerPtr(_playerPtr) {}
 
 
+smartAlien::~smartAlien() {}
 
+char smartAlien::getRepresentation() { return representation; }
+
+double smartAlien::getDistance(int x_player, int y_player, int x_alien, int y_alien) {
+    double left, right;
+    left    = std::pow((x_player - x_alien),2);
+    right   = std::pow((y_player - y_alien),2);
+    return (std::sqrt(left+right));
+}
+
+container::container(double _distance, char _direction)
+    : distance(_distance), direction(_direction){}
+
+
+void bubbleSortContainerVector(std::vector <container> &distances) {
+    unsigned int n = distances.size();
+    char    tempChar;
+    double  tempDouble;
+    for (unsigned int i = 0; i < (n-1); i++){
+        for (unsigned int j = 0; j < (n-1); j++) {
+            if (distances[j].distance > distances[j+1].distance) {
+                // swap values
+                tempChar = distances[j].direction;
+                tempDouble = distances[j].distance;
+
+                distances[j].direction = distances[j+1].direction;
+                distances[j].distance = distances[j+1].distance;
+
+                distances[j+1].distance = tempDouble;
+                distances[j+1].direction = tempChar;
+            }
+        }
+    }
+}
+
+char smartAlien::getDirection() {
+    int x_alien  = getXPosition();
+    int y_alien  = getYPosition();
+    int x_player = playerPtr->getXPosition();
+    int y_player = playerPtr->getYPosition();
+
+    container cUp      = container(getDistance(x_player,y_player,x_alien,y_alien-1),'u');
+    container cDown    = container(getDistance(x_player,y_player,x_alien,y_alien+1),'d');
+    container cLeft    = container(getDistance(x_player,y_player,x_alien-1,y_alien),'l');
+    container cRight   = container(getDistance(x_player,y_player,x_alien+1,y_alien),'r');
+    std::vector <container> distances = {cUp, cDown, cLeft, cRight};
+    // sortiere aufsteigend nach distanz
+    bubbleSortContainerVector(distances);
+    for (unsigned int k = 0; k < distances.size(); k++) {
+        if (distances[k].direction == 'u') {
+//            if (k < 3) {
+//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
+//            }
+            if (map->isFree(x_alien, y_alien-1))  {return 'u';}
+        }
+        else if (distances[k].direction == 'd') {
+//            if (k < 3) {
+//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
+//            }
+            if (map->isFree(x_alien, y_alien+1)) { return 'd'; }
+        }
+        else if (distances[k].direction == 'l') {
+//            if (k < 3) {
+//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
+//            }
+            if (map->isFree(x_alien-1, y_alien)) { return 'l'; }
+        }
+        else if (distances[k].direction == 'r') {
+//            if (k < 3) {
+//                if (distances[k].distance == distances[k+1].distance) { return '!'; }
+//            }
+            if (map->isFree(x_alien+1, y_alien)) { return 'r' ; }
+        }
+    }
+    return '!';
+}
 
 

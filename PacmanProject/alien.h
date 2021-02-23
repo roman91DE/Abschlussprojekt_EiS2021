@@ -1,7 +1,9 @@
 #ifndef ALIEN_H
 #define ALIEN_H
 
-class Map;
+
+#include "player.h"
+#include "map.h"
 
 // Abstrakte Klasse als Interface
 class Alien {
@@ -26,7 +28,11 @@ class Alien {
    friend class Map;
 };
 
-
+// Aus der Aufgabenstellung ist mir nicht ganz klar geworden,
+// ob die dummen Aliens ebenfalls halb so schnell wie Pacman
+// laufen sollen? Ich habe es so implementiert, dass beide Arten
+// von Gegnern mit der halben Geschwindigkeit laufen
+// (...primär damit ich Level 3 schaffe...)
 class stupidAlien : public Alien {
     private:
         char representation;
@@ -37,5 +43,26 @@ class stupidAlien : public Alien {
         virtual char getRepresentation() ;
 };
 
+
+class smartAlien : public Alien {
+    private:
+        char representation;
+        Player *playerPtr;
+    public:
+        smartAlien(int _xPos, int _yPos, Map *_map, Player *_playerPtr);
+        ~smartAlien();
+        virtual char getDirection();
+        char getRepresentation();
+        static double getDistance(int x_player, int y_player, int x_alien, int y_alien);
+};
+
+// hilfsklasse
+struct container {
+    double distance;
+    char direction;
+    container(double _distance, char _direction);
+};
+
+void bubbleSortContainerVector(std::vector <container> &distances);
 
 #endif // ALIEN_H

@@ -19,18 +19,19 @@ Game::Game(std::string filepathMap) : roundCount(0), score(0), total_pill_count(
             // pillen zählen
             else if (temp=='.') { total_pill_count++; }
 
-            // wieder ändern wenn G implementiert ist!
-            // ---------------
+
             // stupid Aliens erstellen
-            else if (temp == 'g' || temp == 'G')   {
+            else if (temp == 'g')   {
                 aliens.push_back(new stupidAlien(ix, iy, map));
                 map->vec[iy][ix] = '.';
+                total_pill_count++;
             }
-            // noch nicht implementiert
-//             else if (temp == 'G') {
-//                 aliens.push_back(new smartAlien(ix, iy, map));
-//                 map->vec[iy][ix] = ' ';
-//             }
+            // smarte Aliens erstellen
+             else if (temp == 'G') {
+                 aliens.push_back(new smartAlien(ix, iy, map, player));
+                 map->vec[iy][ix] = '.';
+                 total_pill_count++;
+             }
         }
     }
 }
