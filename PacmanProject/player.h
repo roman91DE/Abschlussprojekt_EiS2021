@@ -10,9 +10,9 @@ class Player{
     public:
         Player(int _xPos, int _yPos);
         ~Player();
-        int getXPosition() const;
-        int getYPosition() const;
-        char getRepresentation() const;
+        int getXPosition();
+        int getYPosition();
+        char getRepresentation();
         void moveUp();
         void moveDown();
         void moveLeft();

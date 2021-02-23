@@ -5,11 +5,11 @@ Player::Player(int _xPos, int _yPos)
 
 Player::~Player() {}
 
-int Player::getXPosition() const { return xPosition; }
+int Player::getXPosition()          { return xPosition; }
 
-int Player::getYPosition() const { return yPosition; }
+int Player::getYPosition()          { return yPosition; }
 
-char Player::getRepresentation() const { return representation; }
+char Player::getRepresentation()    { return representation; }
 
 void Player::moveUp()       { yPosition--; }
 void Player::moveDown()     { yPosition++; }
