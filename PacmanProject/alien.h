@@ -10,6 +10,7 @@ class Alien {
         int yPosition;
         Map *map;
         bool paused;
+        char cur_direction;
     public:
         Alien(int _xPos, int _yPos, Map *_map);
         virtual ~Alien();

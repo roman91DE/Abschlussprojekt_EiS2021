@@ -1,4 +1,5 @@
 #include "gamewindow.h"
+#include <QString>
 
 
 gameWindow::gameWindow(std::string lvl_ptr) {
@@ -10,8 +11,15 @@ gameWindow::~gameWindow() {
 }
 
 void gameWindow::drawCurrentState() {
+    // draw score to console
+    int buffer = 4;
+    QString score_string = (
+    "current Score: " +  QString::number(current_game->score)
+    + "/" + QString::number(current_game->total_pill_count));
+    writeString(0,1,score_string.toStdString());
+
     // draw map to console
-    for (unsigned int iy = 0; iy < current_game->map->vec.size(); iy++) {
+    for (unsigned int iy = 0+buffer; iy < current_game->map->vec.size()+buffer; iy++) {
         for (unsigned int ix = 0; ix < current_game->map->vec[iy].size(); ix++) {
             setCharacter(ix,iy,  current_game->map->vec[iy][ix]);
         }
@@ -36,13 +44,20 @@ void gameWindow::onRefresh() {
 
     clear();
     drawCurrentState();
+    current_game->moveAliens();
     if (getPressedKey() == CURSOR_LEFT)     { current_game->movePlayer(1); }
     if (getPressedKey() == CURSOR_RIGHT)    { current_game->movePlayer(2); }
     if (getPressedKey() == CURSOR_UP)       { current_game->movePlayer(3); }
-    if (getPressedKey() == CURSOR_DOWN)     { current_game->movePlayer(4); }
+    if (getPressedKey() == CURSOR_DOWN)     { current_game->movePlayer(4);}
+    // check if player died
     if (!current_game->alive()) {
-        writeString(1,1,"you are Dead!");
+        writeString(1,1,"---you are Dead!---");
     }
+    // check if level completed
+    if (current_game->level_complete()) {
+        writeString(1,1,"---you completed the Level!---");
+    }
+    // update current state of the game
     current_game->update();
 
 

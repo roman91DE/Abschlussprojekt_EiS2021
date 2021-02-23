@@ -4,27 +4,39 @@
 #include "map.h"
 
 
-Game::Game(std::string filepathMap) : roundCount(0) {
+Game::Game(std::string filepathMap) : roundCount(0), score(1) {
     map = new Map(filepathMap);
     char temp;
     for(unsigned int iy = 0; iy < map->vec.size(); iy++) {
         for (unsigned int ix = 0; ix < map->vec[iy].size(); ix++) {
             temp = map->vec[iy][ix];
+            // spieler erstellen
             if      (temp == '*')   {
                  player = new Player(ix, iy); 
                  map->vec[iy][ix] = ' ';
             }
-            else if (temp == 'g')   {
+            // pillen zählen
+            else if (temp=='.') { total_pill_count++; }
+
+            // wieder ändern wenn G implementiert ist!
+            // ---------------
+            // stupid Aliens erstellen
+            else if (temp == 'g' || temp == 'G')   {
                 aliens.push_back(new stupidAlien(ix, iy, map));
                 map->vec[iy][ix] = '.';
             }
             // noch nicht implementiert
-            // else if (temp == 'G') {
-            //     aliens.push_back(new smartAlien(ix, iy, map));
-            //     map->vec[iy][ix] = ' ';
-            // }
+//             else if (temp == 'G') {
+//                 aliens.push_back(new smartAlien(ix, iy, map));
+//                 map->vec[iy][ix] = ' ';
+//             }
         }
     }
+}
+
+bool Game::level_complete() {
+    if (score == total_pill_count) { return true; }
+    else                           { return false; }
 }
 
 
@@ -51,6 +63,7 @@ void Game::update() {
     roundCount++;
     if (map->vec[player->getYPosition()][player->getXPosition()] == '.') {
         map->vec[player->getYPosition()][player->getXPosition()] = ' ';
+        score++;
     }
 }
 
