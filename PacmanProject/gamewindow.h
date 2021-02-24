@@ -9,6 +9,7 @@ class gameWindow : public ConsoleWindow
 private:
         Game *current_game;
         bool running;
+        bool xPressed;
 
     public:
         gameWindow(std::string lvl_ptr);
@@ -16,6 +17,7 @@ private:
         void onRefresh();
         void drawCurrentState();
         void endGame(QString &str);
+        void exitGame();
 
 
 };

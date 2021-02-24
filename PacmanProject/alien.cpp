@@ -138,15 +138,19 @@ char smartAlien::getDirection() {
     std::vector <container> distances = {cUp, cDown, cLeft, cRight};
     // sortiere aufsteigend nach distanz
     bubbleSortContainerVector(distances);
-    // debug
+
+    // debug printing
+
 //    for (unsigned int i = 0; i < distances.size(); i++) {
 //        std::cout << distances[i].distance << " - " << distances[i].direction << std::endl;
 //    }
-    std::cout << std::endl <<
-                 "player: "<< x_player << "/" << y_player << '\n'
-                 //"player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
-              << "alien: " << getXPosition() << "/" << getYPosition() << '\n';
+//    std::cout << std::endl <<
+//                 "player: "<< x_player << "/" << y_player << '\n'
+//                 //"player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
+//              << "alien: " << getXPosition() << "/" << getYPosition() << '\n';
     //
+
+
     for (unsigned int k = 0; k < distances.size(); k++) {
         int x_alien_temp  = getXPosition();
         int y_alien_temp  = getYPosition();

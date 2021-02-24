@@ -22,6 +22,11 @@ char convert_2_ascii(QKeyEvent *event)
         return ConsoleWindow::CURSOR_LEFT;
     if (event->key() == Qt::Key_Right)
         return ConsoleWindow::CURSOR_RIGHT;
+
+    // eigene Ergänzung für x_Taste (x Taste = 5)
+    if (event->key() == Qt::Key_X)
+        return ConsoleWindow::X_BUTTON;
+
     const QString &str = event->text();
     if (str.count() <= 0)
         return 0;

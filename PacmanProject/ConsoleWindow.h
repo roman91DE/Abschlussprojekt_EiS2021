@@ -158,6 +158,9 @@ class ConsoleWindow : public QMainWindow
     /// der Vollständigkeit halber: gar keine Taste gedrückt
     static const char NO_KEY = 0;
 
+    // Ergänzung um x Taste für Exit zu implementieren
+    static const char X_BUTTON = 5;
+
     /// Destruktor räumt auf
     ~ConsoleWindow() override;
 };
