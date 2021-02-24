@@ -47,10 +47,17 @@ void mainMenu::slotStartLevel3() {
 
 void mainMenu::slotStartCustomLevel() {
     QString strPath = ui->customLevelPathInput->toPlainText();
-    // validate string
+    // catch empty input strings
     if (strPath == "") {
         QErrorMessage *qEM = new QErrorMessage(this);
         qEM->showMessage("The File Path must not not be empty!");
+        return;
+    }
+    // catch wrong format
+    int ind = strPath.size()-1;
+    if ((!(strPath[ind] == 't')) && (!(strPath[ind-1] == 'x')) && (!(strPath[ind-2] == 't'))) {
+        QErrorMessage *qEM = new QErrorMessage(this);
+        qEM->showMessage("Only .txt Files are possible!!");
         return;
     }
     gameWindowPtr = new gameWindow(strPath.toStdString());
