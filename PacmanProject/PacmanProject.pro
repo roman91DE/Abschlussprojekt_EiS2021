@@ -1,4 +1,4 @@
-QT       += core gui\
+QT       += core gui multimedia
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -44,12 +44,13 @@ DISTFILES += \
     wav_sounds/cembalo-1.wav \
     wav_sounds/cembalo-2.wav \
     wav_sounds/cembalo-3.wav \
-    wav_sounds/cembalo-6.wav \
     wav_sounds/glass-water-1.wav \
     wav_sounds/guitar-12.wav \
     wav_sounds/guitar-13.wav \
     wav_sounds/gummy-cat-2.wav \
     wav_sounds/piano-3.wav \
-    wav_sounds/pipe \
     wav_sounds/pipe.wav \
     wav_sounds/pisk-down.wav
+
+RESOURCES += \
+    wavSounds.qrc

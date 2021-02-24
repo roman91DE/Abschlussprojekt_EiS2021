@@ -13,6 +13,16 @@ gameWindow::gameWindow(std::string lvl_ptr) {
     current_game = new Game(lvl_ptr);
     running = true;
     xPressed = false;
+
+    // sound effect settings for death and win
+    deathSound = new QMediaPlayer(this);
+    deathSound->setMedia(QUrl("qrc:/new/sounds/wav_sounds/cembalo-1.wav"));
+    deathSound->setVolume(10000);
+
+    winSound = new QMediaPlayer(this);
+    winSound->setMedia(QUrl("qrc:/new/sounds/wav_sounds/cembalo-2.wav"));
+    winSound->setVolume(10000);
+
 }
 
 gameWindow::~gameWindow() {
@@ -76,6 +86,7 @@ void gameWindow::onRefresh() {
     current_game->moveAliens(current_game->player->getXPosition(), current_game->player->getYPosition());
     // check if player died
     if ((current_game->isAlive()==false) && running) {
+        deathSound->play();
         QString str = "You are Dead!";
         endGame(str);
     }
@@ -89,6 +100,7 @@ void gameWindow::onRefresh() {
 
     // check if level completed
     if (current_game->level_complete() && running) {
+        winSound->play();
         int timeToFinish = current_game->roundCount/5;
         QString str = "You completed the Level!\n";
         str += "Total Time = " + (QString::number(timeToFinish)) + "Seconds";

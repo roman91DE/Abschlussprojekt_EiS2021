@@ -3,7 +3,7 @@
 
 #include "ConsoleWindow.h"
 #include "game.h"
-
+#include <QtMultimedia>
 
 class gameWindow : public ConsoleWindow
 {
@@ -11,6 +11,10 @@ private:
         Game *current_game;
         bool running;
         bool xPressed;
+        QMediaPlayer *deathSound;
+        QMediaPlayer *winSound;
+
+
 
     public:
         gameWindow(std::string lvl_ptr);

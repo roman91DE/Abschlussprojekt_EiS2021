@@ -6,6 +6,7 @@
 #include "player.h"
 #include "alien.h"
 #include "map.h"
+#include <QMediaPlayer>
 
 class Game {
     public:
@@ -15,6 +16,7 @@ class Game {
         int roundCount;
         int score;
         int total_pill_count;
+        QMediaPlayer *pillSound;
     public:
         Game(std::string filepathMap);
         ~Game();

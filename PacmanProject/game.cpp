@@ -31,6 +31,10 @@ Game::Game(std::string filepathMap) : roundCount(0), score(0), total_pill_count(
              }
         }
     }
+    // sound for pill eating
+    pillSound = new QMediaPlayer();
+    pillSound->setMedia(QUrl("qrc:/new/sounds/wav_sounds/cembalo-3.wav"));
+    pillSound->setVolume(10000);
 }
 
 bool Game::level_complete() {
@@ -45,6 +49,7 @@ Game::~Game() {
     }
     delete player;
     delete map;
+    delete pillSound;
 }
 
 bool Game::isAlive() {
@@ -61,6 +66,7 @@ void Game::update() {
     roundCount++;
     if (map->vec[player->getYPosition()][player->getXPosition()] == '.') {
         map->vec[player->getYPosition()][player->getXPosition()] = ' ';
+        pillSound->play();
         score++;
     }
 }
