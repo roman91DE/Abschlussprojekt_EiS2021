@@ -47,22 +47,22 @@ class stupidAlien : public Alien {
 class smartAlien : public Alien {
     private:
         char representation;
-        Player *playerPtr;
     public:
-        smartAlien(int _xPos, int _yPos, Map *_map, Player *_playerPtr);
+        smartAlien(int _xPos, int _yPos, Map *_map);
         ~smartAlien();
         virtual char getDirection(int xPlayer, int yPlayer);
         virtual char getRepresentation();
         static double getDistance(int x_player, int y_player, int x_alien, int y_alien);
 };
 
-// hilfsklasse
+// hilfsklasse um Züge für smarte Aliens zu bestimmen
 struct container {
     double distance;
     char direction;
     container(double _distance, char _direction);
 };
 
+// Funktion um vector von containern aufsteigend nach ihrer Distanz zu sortieren
 void bubbleSortContainerVector(std::vector <container> &distances);
 
 #endif // ALIEN_H

@@ -25,7 +25,7 @@ Game::Game(std::string filepathMap) : roundCount(0), score(0), total_pill_count(
             }
             // smarte Aliens erstellen
              else if (temp == 'G') {
-                 aliens.push_back(new smartAlien(ix, iy, map, player));
+                 aliens.push_back(new smartAlien(ix, iy, map));
                  map->vec[iy][ix] = '.';
                  total_pill_count++;
              }
