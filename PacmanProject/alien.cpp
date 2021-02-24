@@ -128,13 +128,13 @@ void bubbleSortContainerVector(std::vector <container> &distances) {
 char smartAlien::getDirection() {
     int x_alien  = getXPosition();
     int y_alien  = getYPosition();
-    int x_player = playerPtr->getXPosition();
-    int y_player = playerPtr->getYPosition();
+//    int x_player = playerPtr->getXPosition();
+//    int y_player = playerPtr->getYPosition();
 
-    container cUp      = container(getDistance(x_player,y_player,x_alien,y_alien-1),'u');
-    container cDown    = container(getDistance(x_player,y_player,x_alien,y_alien+1),'d');
-    container cLeft    = container(getDistance(x_player,y_player,x_alien-1,y_alien),'l');
-    container cRight   = container(getDistance(x_player,y_player,x_alien+1,y_alien),'r');
+    container cUp      = container(getDistance(playerPtr->getXPosition(),playerPtr->getYPosition(),x_alien,y_alien-1),'u');
+    container cDown    = container(getDistance(playerPtr->getXPosition(),playerPtr->getYPosition(),x_alien,y_alien+1),'d');
+    container cLeft    = container(getDistance(playerPtr->getXPosition(),playerPtr->getYPosition(),x_alien-1,y_alien),'l');
+    container cRight   = container(getDistance(playerPtr->getXPosition(),playerPtr->getYPosition(),x_alien+1,y_alien),'r');
     std::vector <container> distances = {cUp, cDown, cLeft, cRight};
     // sortiere aufsteigend nach distanz
     bubbleSortContainerVector(distances);
@@ -144,11 +144,11 @@ char smartAlien::getDirection() {
 //    for (unsigned int i = 0; i < distances.size(); i++) {
 //        std::cout << distances[i].distance << " - " << distances[i].direction << std::endl;
 //    }
-//    std::cout << std::endl <<
-//                 "player: "<< x_player << "/" << y_player << '\n'
-//                 //"player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
-//              << "alien: " << getXPosition() << "/" << getYPosition() << '\n';
-    //
+    std::cout << std::endl <<
+                 "player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
+                 //"player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
+              << "alien: " << getXPosition() << "/" << getYPosition() << '\n';
+
 
 
     for (unsigned int k = 0; k < distances.size(); k++) {

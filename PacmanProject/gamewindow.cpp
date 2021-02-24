@@ -73,7 +73,9 @@ void gameWindow::exitGame() {
 void gameWindow::onRefresh() {
     clear();
     drawCurrentState();
-
+    // FOR DEBUGGING
+    std::cout << current_game->player->getXPosition() << " - " << current_game->player->getYPosition() << " - from GAME Coordinates\n";
+    // ---------
     current_game->moveAliens();
     // check if player died
     if ((current_game->isAlive()==false) && running) {

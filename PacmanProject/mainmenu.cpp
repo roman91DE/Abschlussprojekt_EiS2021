@@ -62,5 +62,4 @@ void mainMenu::slotStartCustomLevel() {
     }
     gameWindowPtr = new gameWindow(strPath.toStdString());
     gameWindowPtr->show();
-
 }

@@ -36,6 +36,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    txt_maps/customLevel.txt \
     txt_maps/level1.txt \
     txt_maps/level2.txt \
     txt_maps/level3.txt
