@@ -4,6 +4,7 @@
 #include "ConsoleWindow.h"
 #include "game.h"
 
+
 class gameWindow : public ConsoleWindow
 {
 private:

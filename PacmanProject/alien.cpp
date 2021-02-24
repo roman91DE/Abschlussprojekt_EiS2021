@@ -144,7 +144,13 @@ char smartAlien::getDirection(int xPlayer, int yPlayer) {
         else if (distances[k].direction == 'l') { x_alien_temp--; dir = 'l'; }
         else if (distances[k].direction == 'r') { x_alien_temp++; dir = 'r'; }
         // ... die Richtung des ersten Zugs der möglich ist wird an die move() Funktion weitergebenen
-        if (map->isFree(x_alien_temp, y_alien_temp) == true)    { return dir;}
+        if (map->isFree(x_alien_temp, y_alien_temp) == true)    {
+            // Ausnahme: Zwei Richtungen führen zu selben Distanz zu Pacman, in dem Fall bleibe stehen
+            if (k<3) {
+                if (distances[k].distance == distances[k+1].distance) { dir = '!'; }
+            }
+            return dir;
+        }
     }
     return '!';
 }
