@@ -57,8 +57,8 @@ void gameWindow::drawCurrentState() {
 
 
 // Die Funktion hat einen Bug den ich nicht beseitigen konnte, das Spiel kann mit dem Drücken auf die X-Taste mit Sicherheitsabfrage
-// beendet werden, diese Option funktiert aber nur einziges mal pro Level, dannach ist die X-Taste gesperrt (ansonsten erscheint die
-// QMessageBox in einer Schleife und ich habe nicht rausbekommen wo mein Fehler ist)
+// beendet werden, diese Option funktiert aber nur einziges mal pro Level, dannach ist die X-Taste gesperrt und die
+// Option verschwindet aus dem Display (ansonsten erscheint die QMessageBox in einer Endlosschleife und ich habe nicht rausbekommen wo mein Fehler ist)
 void gameWindow::exitGame() {
         xPressed = true;
         QMessageBox::StandardButton userInput;
@@ -68,7 +68,6 @@ void gameWindow::exitGame() {
             endGame(message);
         }
 }
-
 
 
 void gameWindow::onRefresh() {
@@ -81,13 +80,11 @@ void gameWindow::onRefresh() {
         QString str = "You are Dead!";
         endGame(str);
     }
-
-
     if (getPressedKey() == CURSOR_LEFT)     { current_game->movePlayer(1); }
     if (getPressedKey() == CURSOR_RIGHT)    { current_game->movePlayer(2); }
     if (getPressedKey() == CURSOR_UP)       { current_game->movePlayer(3); }
     if (getPressedKey() == CURSOR_DOWN)     { current_game->movePlayer(4); }
-    if (getPressedKey() == X_BUTTON && (xPressed==false))        { exitGame(); }
+    if (getPressedKey() == X_BUTTON && (xPressed==false))    { exitGame(); }
 
 
 
