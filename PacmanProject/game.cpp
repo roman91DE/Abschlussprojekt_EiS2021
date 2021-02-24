@@ -83,9 +83,9 @@ void Game::movePlayer(int userInput) {
 }
 
 
-void Game::moveAliens() {
+void Game::moveAliens(int xPlayer, int yPlayer) {
     for (unsigned int i = 0; i < aliens.size(); i++) {
-        aliens[i]->move();
+        aliens[i]->move(xPlayer, yPlayer);
     }
 }
 

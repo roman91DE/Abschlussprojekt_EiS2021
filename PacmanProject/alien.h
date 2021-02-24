@@ -17,10 +17,10 @@ class Alien {
         Alien(int _xPos, int _yPos, Map *_map);
         virtual ~Alien();
         virtual char getRepresentation() = 0;
-        virtual char getDirection() = 0;
+        virtual char getDirection(int xPlayer, int yPlayer) = 0;
         int getXPosition() const;
         int getYPosition() const;
-        void move();
+        void move(int xPlayer, int yPlayer);
         void moveUp();
         void moveDown();
         void moveLeft();
@@ -39,7 +39,7 @@ class stupidAlien : public Alien {
     public:
         stupidAlien(int _xPos, int _yPos, Map *_map);
         virtual ~stupidAlien();
-        virtual char getDirection() ;
+        virtual char getDirection(int xPlayer, int yPlayer) ;
         virtual char getRepresentation() ;
 };
 
@@ -51,7 +51,7 @@ class smartAlien : public Alien {
     public:
         smartAlien(int _xPos, int _yPos, Map *_map, Player *_playerPtr);
         ~smartAlien();
-        virtual char getDirection();
+        virtual char getDirection(int xPlayer, int yPlayer);
         virtual char getRepresentation();
         static double getDistance(int x_player, int y_player, int x_alien, int y_alien);
 };

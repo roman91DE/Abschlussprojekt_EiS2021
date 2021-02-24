@@ -21,7 +21,7 @@ class Game {
         bool isAlive();
         void update();
         bool level_complete();
-        void moveAliens();
+        void moveAliens(int xPlayer, int yPlayer);
         // kodierung user input: 1=links; 2=rechts, 3=oben, 4=unten
         void movePlayer(int userInput);
 

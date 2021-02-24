@@ -126,30 +126,15 @@ void bubbleSortContainerVector(std::vector <container> &distances) {
 }
 
 char smartAlien::getDirection(int xPlayer, int yPlayer) {
-    int x_alien  = getXPosition();
-    int y_alien  = getYPosition();
-//    int x_player = playerPtr->getXPosition();
-//    int y_player = playerPtr->getYPosition();
-
-    container cUp      = container(getDistance(xPlayer,yPlayer,x_alien,y_alien-1),'u');
-    container cDown    = container(getDistance(xPlayer, yPlayer,x_alien,y_alien+1),'d');
-    container cLeft    = container(getDistance(xPlayer, yPlayer,x_alien-1,y_alien),'l');
-    container cRight   = container(getDistance(xPlayer, yPlayer,x_alien+1,y_alien),'r');
+    // speicher die Distanzen zwischen Alien und Spieler für alle 4 Richtungen in einem Hilfskonstrukt 
+    container cUp      = container(getDistance(xPlayer,yPlayer,getXPosition(),getYPosition()-1),'u');
+    container cDown    = container(getDistance(xPlayer, yPlayer,getXPosition(),getYPosition()+1),'d');
+    container cLeft    = container(getDistance(xPlayer, yPlayer,getXPosition()-1,getYPosition()),'l');
+    container cRight   = container(getDistance(xPlayer, yPlayer,getXPosition()+1,getYPosition()),'r');
     std::vector <container> distances = {cUp, cDown, cLeft, cRight};
-    // sortiere aufsteigend nach distanz
+    // sortiere container Hilfskonstrukte aufsteigend nach distanz
     bubbleSortContainerVector(distances);
-
-    // debug printing
-
-//    for (unsigned int i = 0; i < distances.size(); i++) {
-//        std::cout << distances[i].distance << " - " << distances[i].direction << std::endl;
-//    }
-    std::cout << std::endl <<
-                 "player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
-                 //"player: "<< playerPtr->getXPosition() << "/" << playerPtr->getYPosition() << '\n'
-              << "alien: " << getXPosition() << "/" << getYPosition() << '\n';
-
-
+    // Durchlaufe startend mit der geringsten Distanz die Container,  ....
     for (unsigned int k = 0; k < distances.size(); k++) {
         int x_alien_temp  = getXPosition();
         int y_alien_temp  = getYPosition();
@@ -158,6 +143,7 @@ char smartAlien::getDirection(int xPlayer, int yPlayer) {
         else if (distances[k].direction == 'd') { y_alien_temp++; dir = 'd'; }
         else if (distances[k].direction == 'l') { x_alien_temp--; dir = 'l'; }
         else if (distances[k].direction == 'r') { x_alien_temp++; dir = 'r'; }
+        // ... die Richtung des ersten Zugs der möglich ist wird an die move() Funktion weitergebenen
         if (map->isFree(x_alien_temp, y_alien_temp) == true)    { return dir;}
     }
     return '!';
