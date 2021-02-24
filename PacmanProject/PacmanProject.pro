@@ -41,9 +41,6 @@ DISTFILES += \
     txt_maps/level1.txt \
     txt_maps/level2.txt \
     txt_maps/level3.txt \
-    wav_sounds/cembalo-1.wav \
-    wav_sounds/cembalo-2.wav \
-    wav_sounds/cembalo-3.wav \
     wav_sounds/glass-water-1.wav \
     wav_sounds/guitar-12.wav \
     wav_sounds/guitar-13.wav \

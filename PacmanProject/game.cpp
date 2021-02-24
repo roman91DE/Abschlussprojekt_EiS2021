@@ -31,7 +31,7 @@ Game::Game(std::string filepathMap) : roundCount(0), score(0), total_pill_count(
              }
         }
     }
-    // sound for pill eating
+    // sound Generator der beim Aufnehmen von Pillen abspielt
     pillSound = new QMediaPlayer();
     pillSound->setMedia(QUrl("qrc:/new/sounds/wav_sounds/cembalo-3.wav"));
     pillSound->setVolume(10000);
