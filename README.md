@@ -12,13 +12,23 @@
    1.  Qt version 5.14.2
    2.  QMake version 3.1
    3.  Compiler: Sowohl mit GCC x86 64bit als auch CLANG 11 x86 64bit getestet und voll funktionsfähig
-   1.  Betriebssystem: Ubuntu 20.10
-   2.  IDE: QT Creator 4.13.2
+       - gcc (Ubuntu 10.2.0-13ubuntu1) 10.2.0
+       - Ubuntu clang version 11.0.0-2
+   5.  Betriebssystem: Ubuntu 20.10
+   6.  IDE: QT Creator 4.13.2
 
 ## Notizen an die Korrigierenden
 
 ### Implementierte Features ###
-- Grund
+- Basisversion: Steuerung von Pacman im Labyrinth, Pillen essen, einfache Geister mit randomisiertet Steuerung, Karten als .txt Files laden
+- Verbesserte Geister Steuerung auf Basis von Distanz zu Pacman 
+- Das Hauptmenü ist ein von QMainWindow abgeleitetes GUI namens mainMenu. Aus dem Hauptmenü aus können die drei vorgegebenen Level gestartet werden um zu spielen (die Pfade sind als statische
+- Stringvariablen implementiert, die Karten müssen wie oben beschrieben im richtigen Ordner liegen). Zusätzlich kann man im Hauptmenü über die Custom Level Option einen Pfad zu alternativen 
+- Levels angeben und diese im Anschluss direkt aus dem Hauptmenü heraus starten. Das Hauptmenü bietet außerdem über ein Drop Down Menü die Möglichkeit den Schwierigkeitsgrad in drei Stufen auszuwählen.
+- Während einer aktiven Spielrunde kann das Spiel einmalig über das Drücken der x Taste pausiert und mit Sicherheitsabfrage abgebrochen werden.
+- Soundeffekte sind zusätzlich implementiert (Level erfolgreich beendet, gestorben, Pille gegessen)
+
+- 
 - ...
 
 ## Quellen

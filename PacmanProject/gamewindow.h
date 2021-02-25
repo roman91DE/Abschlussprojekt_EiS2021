@@ -7,7 +7,7 @@
 
 class gameWindow : public ConsoleWindow
 {
-private:
+    private:
         Game *current_game;
         bool running;
         bool xPressed;

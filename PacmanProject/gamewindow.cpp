@@ -28,14 +28,17 @@ gameWindow::~gameWindow() {
 }
 
 void gameWindow::drawCurrentState() {
-    // draw score to console
+    // draw  to console - overview of stats
     int buffer = 6;
-    QString score_string = (
-    "Score: " +  QString::number(current_game->score)
+    // pills collected
+    QString pillString = (
+    "Pills: " +  QString::number(current_game->score)
     + "/" + QString::number(current_game->total_pill_count));
-    writeString(12,1,score_string.toStdString());
+    writeString(12,1,pillString.toStdString());
+    // time to complete level
     QString time_string = "Timer:" + (QString::number(current_game->roundCount/5));
     writeString(42,1,time_string.toStdString());
+
     
     if (!xPressed) {
         QString exitInstruction = "Press x-Button to quit Level";
@@ -101,8 +104,15 @@ void gameWindow::onRefresh() {
     if (current_game->level_complete() && running) {
         winSound->play();
         int timeToFinish = current_game->roundCount/5;
+        // score berechnet sich als: ( time_taken / pills_collected * 100) * schwierigkeitsmodifikator
+        // modifikator: leicht*=1,0; mittel*=1,25; hardcore *=1,5
+        double score = ((current_game->total_pill_count / timeToFinish)*100);
+        if (difficultySelected > 0) {
+            if (difficultySelected == 1) score *=1.25;
+            else                         score +=1.5 ;
+        }
         QString str = "You completed the Level!\n";
-        str += "Total Time = " + (QString::number(timeToFinish)) + "Seconds";
+        str += "Total Time: " + (QString::number(timeToFinish)) + "Seconds\nYour Score:" + QString::number(score);
         endGame((str));
     }
 
