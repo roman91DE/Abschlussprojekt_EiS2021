@@ -1,7 +1,5 @@
-Erklärung der Softwarearchitektur
-..............
-
 1.) Umsetzung des eigentlichen Spiels im Hintergrund
+..............
 
 Beim Programmieren des Spiels habe ich einen objektorientierten Ansatz verfolgt um dieses möglichst einfach stufenweise nachrüsten zu können.
 Die Kernelemente des Spiels bilden die 3 Klassen: Player, Alien und Map. Player und Alien enthalten dabei stets die aktuelle Koordinaten der jeweiligen Spielfigur
@@ -25,6 +23,7 @@ SoundEffekte implementieren, Hauptmenü einbauen) war relativ problemlos und ohn
 
 
 2.) Visuelle Darstellung in virtueller Konsole/ GUI Hauptmenü
+..............
 
 Die Visualisierung des Spiels erfolgt über die bereitgestellte Konsolenbibliothek von der ich eine Subklasse gameWindow abgeleitet habe.
 Da die Bestandteile des Spiels in der Game Klasse bereits gebündelt sind, konnte ich diese einfach an die gameWindow Klasse (in Kombination mit wenigen Zusatzparametern) weitergeben.
@@ -38,6 +37,7 @@ Wenn aus dem Hauptmenü ein Level aufgerufen wird startet mainMmenu über seine 
 in dem anschließend Pacman gespielt werden kann.
 
 3.) Speichermanagement
+..............
 
 Ich habe verucht das Speichermanagement möglichst nahe an der Qt Vorgehensweise zu orientieren, Qt Elemente werden über den this Pointer an ihre Parent Widgets
 gebunden und von diesen freigegeben. Bei Heapspeicher Allokation von nicht Qt Elementen, z.B. Pointer auf Alien oder Map Objekte, verfolge ich den gleichen Ansatz:
