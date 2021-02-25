@@ -14,8 +14,11 @@
    3.  Compiler: Sowohl mit GCC x86 64bit als auch CLANG 11 x86 64bit getestet und voll funktionsfähig
        - gcc (Ubuntu 10.2.0-13ubuntu1) 10.2.0
        - Ubuntu clang version 11.0.0-2
-   5.  Betriebssystem: Ubuntu 20.10
-   6.  IDE: QT Creator 4.13.2
+   4.  Betriebssystem: Ubuntu 20.10
+   5.  IDE: QT Creator 4.13.2
+   
+Wie ich das Projekt zum Test gebaut habe: Der Ordner PacmanProject wird mitsamt aller Unterdateien und Ordner heruntergeladen, die .pro Datei wird mit QtCreator als neues Projekt geöffnet und das automatische Builden und Starten des Programms funktioniert problemlos auf allen Rechnern die ich getestet habe.
+   
 
 ## Notizen an die Korrigierenden
 
