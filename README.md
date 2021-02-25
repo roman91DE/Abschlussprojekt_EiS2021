@@ -19,7 +19,7 @@
    
 Wie ich das Projekt zum Test gebaut habe: 
 Test1: Der Ordner PacmanProject wird mitsamt aller Unterdateien und Ordner heruntergeladen, die .pro Datei wird mit QtCreator als neues Projekt geöffnet und das automatische Builden und Starten des Programms funktioniert problemlos auf allen Rechnern die ich getestet habe (Ubuntu/RaspberryPi OS)
-Test2: Im Ordner PacmanProject aus der Konsole heraus <qmake> aufgerufen, anschließenden <make> aufgerufen und dann das executable ausführen
+Test2: Im Ordner PacmanProject aus der Konsole heraus "qmake" aufgerufen, anschließenden "make" aufgerufen und dann das executable ausführen
 Beide Vorgehensweisen funktionieren bei mir problemlos (Karten werden gefunden und sound effekte werden als .qrc verwendet)
    
 
@@ -30,7 +30,7 @@ Beide Vorgehensweisen funktionieren bei mir problemlos (Karten werden gefunden u
 
 - Verbesserte Geister Steuerung auf Basis von Distanz zu Pacman 
 
-- Das Hauptmenü ist ein von QMainWindow abgeleitetes GUI namens mainMenu. Aus dem Hauptmenü aus können die drei vorgegebenen Level gestartet werden um zu spielen (die Pfade sind als statische Stringvariablen implementiert, die Karten müssen wie oben beschrieben im richtigen Ordner liegen). 
+- Das Hauptmenü ist ein von QMainWindow abgeleitetes GUI namens mainMenu. Von dem Hauptmenü aus können die drei vorgegebenen Level gestartet werden um zu spielen (die Pfade sind als statische Stringvariablen implementiert, die Karten müssen wie oben beschrieben im richtigen Ordner liegen). 
 
 - Zusätzlich kann man im Hauptmenü über die Custom Level Option einen Pfad zu alternativen Levels angeben und diese im Anschluss direkt aus dem Hauptmenü heraus starten. 
 
@@ -46,7 +46,7 @@ Beide Vorgehensweisen funktionieren bei mir problemlos (Karten werden gefunden u
 - Die im Rahmen der Veranstaltung bereitgestelle Konsolenbibliothek wird verwendet, an einer Stelle habe ich diese außerdem modifiziert (X_Taste als Usereingabe erkennen)
 - Die API von Qt Bestandteilen habe ich über Qt Assistant (Version 5.14.2 Browser: Qt WebKit) und die Qt online Dokumentation (Link: https://doc.qt.io/) recherchiert
 - Die Benutzung von QMediaPlayer und QUrls in Kombination mit .qrc Files habe ich anhand der in der Qt Dokumentationen bereitgestellten Beispiele nachvollzogen und meine Lösung 
-   in Orientierung daran auf meine speziellen Bedürfnisse angepasst (nicht wörtlich übernommen!)
+   in Orientierung daran auf meine speziellen Bedürfnisse modifiziert.
 
    Link1: https://doc.qt.io/qt-5/qurl.html
 
@@ -54,11 +54,11 @@ Beide Vorgehensweisen funktionieren bei mir problemlos (Karten werden gefunden u
 
    Link3: https://doc.qt.io/qt-5/resources.html
 
-Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen und die korrekte Einbindung von dem Qt multimedia Module in die .pro Datei gelernt habe
+Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen und die korrekte Einbindung von dem Qt multimedia Module in die .pro Datei gelernt.
 
 C++ Qt Game Tutorial 7 - Adding Sound Effects/Music - Kanal: Abdullah Aghazadah - Link: https://www.youtube.com/watch?v=DS7CDpIrwN4
 
-Auch hier ist meine Lösung aber eigenständig erarbeitet um das Problem der Deanonymisierung durch absolute Dateipfade zu umgehen.
+Auch hier ist meine Lösung aber eigenständig erarbeitet um das Problem der Deanonymisierung durch absolute Dateipfade zu umgehen. 
 
 
   Ich habe an keiner Stelle Code wörtlich aus anderen Quellen übernommen, das komplette Design ist eigenständig ausgedacht, programmiert und getestet. Zur Hilfe habe ich mit den folgenden Tools gearbeitet:
@@ -66,6 +66,6 @@ Auch hier ist meine Lösung aber eigenständig erarbeitet um das Problem der Dea
    - Qt Creator - automatisches Erstellen und aktualisieren der qmake/.pro Dateien
    - Valgrind Memory Checker - Check auf Memory Leaks
   
-Die Lösungen aus Übungsaufgaben sowie die Vorlesungsunterlagen sind ebenfalls in keinster Weise von mir verwendet worden.
+Die Lösungen aus Übungsaufgaben sowie die Vorlesungsunterlagen wurden nicht genutzt beim Erstellen meines Projekts.
   
   
