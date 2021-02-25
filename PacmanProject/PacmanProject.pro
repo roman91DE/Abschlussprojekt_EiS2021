@@ -3,7 +3,7 @@ QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -41,13 +41,7 @@ DISTFILES += \
     txt_maps/level1.txt \
     txt_maps/level2.txt \
     txt_maps/level3.txt \
-    wav_sounds/glass-water-1.wav \
-    wav_sounds/guitar-12.wav \
-    wav_sounds/guitar-13.wav \
-    wav_sounds/gummy-cat-2.wav \
-    wav_sounds/piano-3.wav \
-    wav_sounds/pipe.wav \
-    wav_sounds/pisk-down.wav
+
 
 RESOURCES += \
     wavSounds.qrc

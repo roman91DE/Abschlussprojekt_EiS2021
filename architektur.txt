@@ -40,7 +40,7 @@ in dem anschließend Pacman gespielt werden kann. Wird das Spiel beendet (Abbruc
 ..............
 
 Ich habe mich beim Speichermanagement an der Qt Vorgehensweise orientiert, Qt Elemente werden über den this Pointer an ihre Parent Widgets
-gebunden und von diesen freigegeben. Bei Heapspeicher Allokation von nicht Qt Elementen, z.B. Pointer auf Alien oder Map Objekte, verfolge ich den gleichen Ansatz:
+gebunden und von diesen freigegeben. Bei Heapspeicher Allokation von nicht Qt Elementen, z.B.  Alien oder Map Objekte, verfolge ich den gleichen Ansatz:
     - mainMenu Destruktor ruft gameWindow Destruktor auf
     - gameWindow Destruktor ruft game Destruktor auf
     - game Destruktor gibt anschließend wiederrum die Ressourcen für Player/Alien/Map frei
