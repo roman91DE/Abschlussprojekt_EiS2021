@@ -2,23 +2,30 @@
 #include "ui_mainmenu.h"
 #include <QErrorMessage>
 #include <QValidator>
+#include <QInputDialog>
+#include <QComboBox>
 
-mainMenu::mainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainMenu){
+mainMenu::mainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainMenu), difficulty(1){
     ui->setupUi(this);
+    ui->difficultySelection->setCurrentIndex(1);
     // setting relative paths for standard levels
     lvl1_path = "../PacmanProject/txt_maps/level1.txt";
     lvl2_path = "../PacmanProject/txt_maps/level2.txt";
     lvl3_path = "../PacmanProject/txt_maps/level3.txt";
+
     // connections for main menu buttons
-    connect(ui->playLevel1,         SIGNAL(clicked()), this, SLOT(slotStartLevel1()));
-    connect(ui->playLevel2,         SIGNAL(clicked()), this, SLOT(slotStartLevel2()));
-    connect(ui->playLevel3,         SIGNAL(clicked()), this, SLOT(slotStartLevel3()));
-    connect(ui->playCustomLevel,    SIGNAL(clicked()), this, SLOT(slotStartCustomLevel()));
-    connect(ui->quitButton,         SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->playLevel1,             SIGNAL(clicked()),                  this,                SLOT(slotStartLevel1()));
+    connect(ui->playLevel2,             SIGNAL(clicked()),                  this,                SLOT(slotStartLevel2()));
+    connect(ui->playLevel3,             SIGNAL(clicked()),                  this,                SLOT(slotStartLevel3()));
+    connect(ui->playCustomLevel,        SIGNAL(clicked()),                  this,                SLOT(slotStartCustomLevel()));
+    connect(ui->quitButton,             SIGNAL(clicked()),                  this,                SLOT(close()));
+    connect(ui->difficultySelection,    SIGNAL(currentIndexChanged(int)),   this,                SLOT(slotSetDifficulty(int)));
+
     // setting up tool tips
     ui->playLevel1->setToolTip("Start Level 1!");
     ui->playLevel2->setToolTip("Start Level 2!");
     ui->playLevel3->setToolTip("Start Level 3!");
+    ui->difficultySelection->setToolTip("Select the Level of Difficulty");
     ui->playCustomLevel->setToolTip("Play a custom Level at the specified Path!");
     ui->customLevelPathInput->setToolTip(("Enter the path to a matching txt File to play custom Levels!"));
     ui->quitButton->setToolTip("Quit Pacman");
@@ -60,6 +67,12 @@ void mainMenu::slotStartCustomLevel() {
         qEM->showMessage("Only .txt Files are possible!!");
         return;
     }
-    gameWindowPtr = new gameWindow(strPath.toStdString());
+    // get number of lines for custom map file
+    int _numLines= QInputDialog::getInt(this, "Specifications", "Please enter how many lines your custom Map has: ",28,1,42);
+    gameWindowPtr = new gameWindow(strPath.toStdString(), _numLines);
     gameWindowPtr->show();
+}
+
+void mainMenu::slotSetDifficulty(int) {
+    this->difficulty = ui->difficultySelection->currentIndex();
 }

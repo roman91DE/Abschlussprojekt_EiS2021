@@ -17,7 +17,7 @@ private:
 
 
     public:
-        gameWindow(std::string lvl_ptr);
+        gameWindow(std::string lvl_ptr, unsigned int numLines=28);
         ~gameWindow();
         void onRefresh();
         void drawCurrentState();

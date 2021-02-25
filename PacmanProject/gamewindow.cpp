@@ -9,8 +9,8 @@
 
 
 
-gameWindow::gameWindow(std::string lvl_ptr) {
-    current_game = new Game(lvl_ptr);
+gameWindow::gameWindow(std::string lvl_ptr, unsigned int numLines) {
+    current_game = new Game(lvl_ptr, numLines);
     running = true;
     xPressed = false;
 

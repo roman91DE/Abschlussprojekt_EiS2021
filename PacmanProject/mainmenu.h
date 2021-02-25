@@ -21,8 +21,9 @@ Q_OBJECT
         std::string lvl1_path;
         std::string lvl2_path;
         std::string lvl3_path;
+        // 0=easy; 1=medium, 2=hardcore
+        int difficulty;
         gameWindow* gameWindowPtr;
-
 
 
     public slots:
@@ -30,6 +31,7 @@ Q_OBJECT
         void slotStartLevel2();
         void slotStartLevel3();
         void slotStartCustomLevel();
+        void slotSetDifficulty(int);
 
 
 };

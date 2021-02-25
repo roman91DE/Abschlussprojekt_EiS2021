@@ -1,13 +1,12 @@
 #include "map.h"
 #include <iostream>
 
-Map::Map(std::string filepath) {
+Map::Map(std::string filepath, unsigned int numLines) {
     std::fstream fileStream;
     fileStream.open(filepath);
     if (! fileStream.is_open()) { std::cout << "Can't open File !\n"; return; }
     char buffer;
-    // fstream später noch mit while Schleife implementieren
-    for (unsigned int i = 0; i < 28; i++) {
+    for (unsigned int i = 0; i < numLines; i++) {
         std::vector <char> line;
         while (true) {
             buffer = fileStream.get();

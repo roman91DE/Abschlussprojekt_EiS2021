@@ -10,7 +10,7 @@ class Map {
     private:
         std::vector < std::vector<char> > vec;
     public:
-        Map(std::string filepath);
+        Map(std::string filepath, unsigned int numLines=28);
         ~Map();
         bool isFree(int xPosition, int yPosition);
         // for debugging only

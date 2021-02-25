@@ -4,8 +4,8 @@
 #include "map.h"
 
 
-Game::Game(std::string filepathMap) : roundCount(0), score(0), total_pill_count(0) {
-    map = new Map(filepathMap);
+Game::Game(std::string filepathMap, unsigned int numLines) : roundCount(0), score(0), total_pill_count(0) {
+    map = new Map(filepathMap, numLines);
     char temp;
     for(unsigned int iy = 0; iy < map->vec.size(); iy++) {
         for (unsigned int ix = 0; ix < map->vec[iy].size(); ix++) {
