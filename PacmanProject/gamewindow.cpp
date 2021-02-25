@@ -36,6 +36,7 @@ void gameWindow::drawCurrentState() {
     writeString(12,1,score_string.toStdString());
     QString time_string = "Timer:" + (QString::number(current_game->roundCount/5));
     writeString(42,1,time_string.toStdString());
+    
     if (!xPressed) {
         QString exitInstruction = "Press x-Button to quit Level";
         writeString(12,0, exitInstruction.toStdString());
