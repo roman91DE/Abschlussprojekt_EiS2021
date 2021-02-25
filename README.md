@@ -30,12 +30,24 @@ Wie ich das Projekt zum Test gebaut habe: Der Ordner PacmanProject wird mitsamt 
 - Levels angeben und diese im Anschluss direkt aus dem Hauptmenü heraus starten. Das Hauptmenü bietet außerdem über ein Drop Down Menü die Möglichkeit den Schwierigkeitsgrad in drei Stufen auszuwählen.
 - Während einer aktiven Spielrunde kann das Spiel einmalig über das Drücken der x Taste pausiert und mit Sicherheitsabfrage abgebrochen werden.
 - Soundeffekte sind zusätzlich implementiert (Level erfolgreich beendet, gestorben, Pille gegessen)
-
 - 
-- ...
 
 ## Quellen
 - Die verwendeten .wav Files stammen aus dem Ubuntu apt Package <sound-icons> Version 0.1-5 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 - Die im Rahmen der Veranstaltung bereitgestelle Konsolenbibliothek wird verwendet, an einer Stelle habe ich diese außerdem modifiziert (X_Taste als Usereingabe erkennen)
-- 
-- ...
+- Die API von Qt Bestandteilen habe ich über Qt Assistant (Version 5.14.2 Browser: Qt WebKit) und die Qt online Dokumentation (Link: https://doc.qt.io/) recherchiert
+- Die Benutzung von QMediaPlayer und QUrls in Kombination mit .qrc Files habe ich anhand der in der Qt Dokumentationen bereitgestellten Beispiele nachvollzogen und meine Lösung 
+   in Orientierung daran implementiert
+   Link1: https://doc.qt.io/qt-5/qurl.html
+   Link2: https://doc.qt.io/qt-5/qmediaplayer.html
+   Link3: https://doc.qt.io/qt-5/resources.html
+Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen und die korrekte Einbindung on multimedia in die .pro Datei gelernt habe
+   C++ Qt Game Tutorial 7 - Adding Sound Effects/Music - Kanal: Abdullah Aghazadah - Link: https://www.youtube.com/watch?v=DS7CDpIrwN4
+
+
+  Ich habe an keiner Stelle Code wörtlich aus anderen Quellen übernommen, das komplette Design ist eigenständig ausgedacht, programmiert und getestet. Zur Hilfe habe ich mit den folgenden Tools gearbeitet:
+   - Qt Designer - .ui File für Hauptmenü erstellt
+   - Qt Creator - automatisches Erstellen und aktualisieren der qmake/.pro Dateien
+   - Valgrind Memory Checker - Check auf Memory Leaks
+  
+  
