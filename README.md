@@ -17,7 +17,10 @@
    4.  Betriebssystem: Ubuntu 20.10
    5.  IDE: QT Creator 4.13.2
    
-Wie ich das Projekt zum Test gebaut habe: Der Ordner PacmanProject wird mitsamt aller Unterdateien und Ordner heruntergeladen, die .pro Datei wird mit QtCreator als neues Projekt geöffnet und das automatische Builden und Starten des Programms funktioniert problemlos auf allen Rechnern die ich getestet habe (Ubuntu/RaspberryPiOS)
+Wie ich das Projekt zum Test gebaut habe: 
+Test1: Der Ordner PacmanProject wird mitsamt aller Unterdateien und Ordner heruntergeladen, die .pro Datei wird mit QtCreator als neues Projekt geöffnet und das automatische Builden und Starten des Programms funktioniert problemlos auf allen Rechnern die ich getestet habe (Ubuntu/RaspberryPi OS)
+Test2: Im Ordner PacmanProject aus der Konsole heraus <qmake> aufgerufen, anschließenden <make> aufgerufen und dann das executable ausführen
+Beide Vorgehensweisen funktionieren bei mir problemlos (Karten werden gefunden und sound effekte werden als .qrc verwendet)
    
 
 ## Notizen an die Korrigierenden
@@ -38,11 +41,17 @@ Wie ich das Projekt zum Test gebaut habe: Der Ordner PacmanProject wird mitsamt 
 - Die API von Qt Bestandteilen habe ich über Qt Assistant (Version 5.14.2 Browser: Qt WebKit) und die Qt online Dokumentation (Link: https://doc.qt.io/) recherchiert
 - Die Benutzung von QMediaPlayer und QUrls in Kombination mit .qrc Files habe ich anhand der in der Qt Dokumentationen bereitgestellten Beispiele nachvollzogen und meine Lösung 
    in Orientierung daran auf meine speziellen Bedürfnisse angepasst (nicht wörtlich übernommen!)
+
    Link1: https://doc.qt.io/qt-5/qurl.html
+
    Link2: https://doc.qt.io/qt-5/qmediaplayer.html
+
    Link3: https://doc.qt.io/qt-5/resources.html
+
 Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen und die korrekte Einbindung von dem Qt multimedia Module in die .pro Datei gelernt habe
-   C++ Qt Game Tutorial 7 - Adding Sound Effects/Music - Kanal: Abdullah Aghazadah - Link: https://www.youtube.com/watch?v=DS7CDpIrwN4
+
+C++ Qt Game Tutorial 7 - Adding Sound Effects/Music - Kanal: Abdullah Aghazadah - Link: https://www.youtube.com/watch?v=DS7CDpIrwN4
+
 Auch hier ist meine Lösung aber eigenständig erarbeitet um das Problem der Deanonymisierung durch absolute Dateipfade zu umgehen.
 
 
