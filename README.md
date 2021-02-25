@@ -37,11 +37,11 @@ Wie ich das Projekt zum Test gebaut habe: Der Ordner PacmanProject wird mitsamt 
 - Die im Rahmen der Veranstaltung bereitgestelle Konsolenbibliothek wird verwendet, an einer Stelle habe ich diese außerdem modifiziert (X_Taste als Usereingabe erkennen)
 - Die API von Qt Bestandteilen habe ich über Qt Assistant (Version 5.14.2 Browser: Qt WebKit) und die Qt online Dokumentation (Link: https://doc.qt.io/) recherchiert
 - Die Benutzung von QMediaPlayer und QUrls in Kombination mit .qrc Files habe ich anhand der in der Qt Dokumentationen bereitgestellten Beispiele nachvollzogen und meine Lösung 
-   in Orientierung daran implementiert
+   in Orientierung daran implementiert (jedoch nicht wörtlich übernommen!)
    Link1: https://doc.qt.io/qt-5/qurl.html
    Link2: https://doc.qt.io/qt-5/qmediaplayer.html
    Link3: https://doc.qt.io/qt-5/resources.html
-Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen und die korrekte Einbindung on multimedia in die .pro Datei gelernt habe
+Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen und die korrekte Einbindung von dem Qt multimedia Module in die .pro Datei gelernt habe
    C++ Qt Game Tutorial 7 - Adding Sound Effects/Music - Kanal: Abdullah Aghazadah - Link: https://www.youtube.com/watch?v=DS7CDpIrwN4
 
 
