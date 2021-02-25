@@ -38,17 +38,17 @@ mainMenu::~mainMenu(){
 
 
 void mainMenu::slotStartLevel1() {
-    gameWindowPtr = new gameWindow(lvl1_path);
+    gameWindowPtr = new gameWindow(lvl1_path, difficulty);
     gameWindowPtr->show();
 }
 
 void mainMenu::slotStartLevel2() {
-    gameWindowPtr = new gameWindow(lvl2_path);
+    gameWindowPtr = new gameWindow(lvl2_path, difficulty);
     gameWindowPtr->show();
 }
 
 void mainMenu::slotStartLevel3() {
-    gameWindowPtr = new gameWindow(lvl3_path);
+    gameWindowPtr = new gameWindow(lvl3_path, difficulty);
     gameWindowPtr->show();
 }
 
@@ -69,7 +69,7 @@ void mainMenu::slotStartCustomLevel() {
     }
     // get number of lines for custom map file
     int _numLines= QInputDialog::getInt(this, "Specifications", "Please enter how many lines your custom Map has: ",28,1,42);
-    gameWindowPtr = new gameWindow(strPath.toStdString(), _numLines);
+    gameWindowPtr = new gameWindow(strPath.toStdString(),difficulty, _numLines);
     gameWindowPtr->show();
 }
 

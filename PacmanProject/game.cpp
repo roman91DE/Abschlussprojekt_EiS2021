@@ -4,7 +4,7 @@
 #include "map.h"
 
 
-Game::Game(std::string filepathMap, unsigned int numLines) : roundCount(0), score(0), total_pill_count(0) {
+Game::Game(std::string filepathMap,int _difficultySelected, unsigned int numLines) : roundCount(0), score(0), total_pill_count(0) {
     map = new Map(filepathMap, numLines);
     char temp;
     for(unsigned int iy = 0; iy < map->vec.size(); iy++) {
@@ -19,13 +19,13 @@ Game::Game(std::string filepathMap, unsigned int numLines) : roundCount(0), scor
             else if (temp=='.') { total_pill_count++; }
             // stupid Aliens erstellen
             else if (temp == 'g')   {
-                aliens.push_back(new stupidAlien(ix, iy, map));
+                aliens.push_back(new stupidAlien(ix, iy, map, _difficultySelected));
                 map->vec[iy][ix] = '.';
                 total_pill_count++;
             }
             // smarte Aliens erstellen
              else if (temp == 'G') {
-                 aliens.push_back(new smartAlien(ix, iy, map));
+                 aliens.push_back(new smartAlien(ix, iy, map, _difficultySelected));
                  map->vec[iy][ix] = '.';
                  total_pill_count++;
              }

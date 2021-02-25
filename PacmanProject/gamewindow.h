@@ -11,13 +11,14 @@ private:
         Game *current_game;
         bool running;
         bool xPressed;
+        int difficultySelected;
         QMediaPlayer *deathSound;
         QMediaPlayer *winSound;
 
 
 
     public:
-        gameWindow(std::string lvl_ptr, unsigned int numLines=28);
+        gameWindow(std::string lvl_ptr,int _difficultySelected, unsigned int numLines=28);
         ~gameWindow();
         void onRefresh();
         void drawCurrentState();

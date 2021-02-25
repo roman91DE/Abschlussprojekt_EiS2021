@@ -11,10 +11,10 @@ class Alien {
         int xPosition;
         int yPosition;
         Map *map;
-        bool paused;
         char cur_direction;
+        int difficultySelected, waitForNRounds, counter;
     public:
-        Alien(int _xPos, int _yPos, Map *_map);
+        Alien(int _xPos, int _yPos, Map *_map, int _difficultySelected);
         virtual ~Alien();
         virtual char getRepresentation() = 0;
         virtual char getDirection(int xPlayer, int yPlayer) = 0;
@@ -37,7 +37,7 @@ class stupidAlien : public Alien {
     private:
         char representation;
     public:
-        stupidAlien(int _xPos, int _yPos, Map *_map);
+        stupidAlien(int _xPos, int _yPos, Map *_map, int _difficultySelected);
         virtual ~stupidAlien();
         virtual char getDirection(int xPlayer, int yPlayer) ;
         virtual char getRepresentation() ;
@@ -48,7 +48,7 @@ class smartAlien : public Alien {
     private:
         char representation;
     public:
-        smartAlien(int _xPos, int _yPos, Map *_map);
+        smartAlien(int _xPos, int _yPos, Map *_map, int _difficultySelected);
         ~smartAlien();
         virtual char getDirection(int xPlayer, int yPlayer);
         virtual char getRepresentation();

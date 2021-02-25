@@ -5,8 +5,15 @@
 #include <cmath>
 #include <iostream>
 
-Alien::Alien(int _xPos, int _yPos, Map *_map)
-    : xPosition(_xPos), yPosition(_yPos), map(_map), paused(true), cur_direction('u') {}
+Alien::Alien(int _xPos, int _yPos, Map *_map, int _difficultySelected)
+    : xPosition(_xPos), yPosition(_yPos), map(_map), cur_direction('u'), difficultySelected(_difficultySelected) {
+    // set up level of difficulty
+    if      (difficultySelected == 0) { waitForNRounds = 4; }   // easy
+    else if (difficultySelected == 1) { waitForNRounds = 2; }   // medium
+    else                              { waitForNRounds = 1; }   // hardcore
+    counter = 0;
+
+}
 
 Alien::~Alien(){};
 
@@ -15,11 +22,9 @@ int Alien::getXPosition()       const { return xPosition; }
 int Alien::getYPosition()       const { return yPosition; }
 
 void Alien::move(int xPlayer, int yPlayer) {
-    if (paused) {
-        paused = false;
-        return;
-    }
-    paused = true;
+    counter++;
+    if(counter>=waitForNRounds) { counter = 0; }
+    else                        { return; }
     char direction = getDirection(xPlayer, yPlayer);
     if      (direction == 'u') { moveUp(); }
     else if (direction == 'd') { moveDown(); }
@@ -39,8 +44,8 @@ void Alien::moveRight()    { xPosition++; }
 
 // stupid Aliens Subclass
 
-stupidAlien::stupidAlien(int _xPos, int _yPos, Map *_map)
-    : Alien(_xPos, _yPos, _map), representation('g') {}
+stupidAlien::stupidAlien(int _xPos, int _yPos, Map *_map, int _difficultySelected)
+    : Alien(_xPos, _yPos, _map, _difficultySelected), representation('g') {}
 
 
 stupidAlien::~stupidAlien() {};
@@ -85,8 +90,8 @@ char stupidAlien::getDirection(int xPlayer, int yPlayer) {
 }
 
 
-smartAlien::smartAlien(int _xPos, int _yPos, Map *_map)
-    : Alien(_xPos, _yPos, _map), representation('G') {}
+smartAlien::smartAlien(int _xPos, int _yPos, Map *_map, int _difficultySelected)
+    : Alien(_xPos, _yPos, _map, _difficultySelected), representation('G') {}
 
 
 smartAlien::~smartAlien() {}

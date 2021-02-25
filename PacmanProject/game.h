@@ -18,7 +18,7 @@ class Game {
         int total_pill_count;
         QMediaPlayer *pillSound;
     public:
-        Game(std::string filepathMap, unsigned int numLines=28);
+        Game(std::string filepathMap, int _difficultySelected, unsigned int numLines=28);
         ~Game();
         bool isAlive();
         void update();

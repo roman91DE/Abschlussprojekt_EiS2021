@@ -9,16 +9,14 @@
 
 
 
-gameWindow::gameWindow(std::string lvl_ptr, unsigned int numLines) {
-    current_game = new Game(lvl_ptr, numLines);
-    running = true;
-    xPressed = false;
+gameWindow::gameWindow(std::string lvl_ptr,int _difficultySelected, unsigned int numLines)
+    : running(true), xPressed(false), difficultySelected(_difficultySelected) {
 
+    current_game = new Game(lvl_ptr, difficultySelected, numLines);
     // sound effect settings for death and win
     deathSound = new QMediaPlayer(this);
     deathSound->setMedia(QUrl("qrc:/new/sounds/wav_sounds/cembalo-1.wav"));
     deathSound->setVolume(10000);
-
     winSound = new QMediaPlayer(this);
     winSound->setMedia(QUrl("qrc:/new/sounds/wav_sounds/cembalo-2.wav"));
     winSound->setVolume(10000);
