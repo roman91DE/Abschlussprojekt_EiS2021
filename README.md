@@ -17,7 +17,7 @@
    4.  Betriebssystem: Ubuntu 20.10
    5.  IDE: QT Creator 4.13.2
    
-Wie ich das Projekt zum Test gebaut habe: Der Ordner PacmanProject wird mitsamt aller Unterdateien und Ordner heruntergeladen, die .pro Datei wird mit QtCreator als neues Projekt geöffnet und das automatische Builden und Starten des Programms funktioniert problemlos auf allen Rechnern die ich getestet habe (Ubuntu/MacOs-BigSur/RaspberryPiOS)
+Wie ich das Projekt zum Test gebaut habe: Der Ordner PacmanProject wird mitsamt aller Unterdateien und Ordner heruntergeladen, die .pro Datei wird mit QtCreator als neues Projekt geöffnet und das automatische Builden und Starten des Programms funktioniert problemlos auf allen Rechnern die ich getestet habe (Ubuntu/RaspberryPiOS)
    
 
 ## Notizen an die Korrigierenden
