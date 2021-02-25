@@ -8,7 +8,7 @@
 #include <iostream>
 
 
-
+// Konstruktor für eine neue virtuelle Konsole mit Pacman Spiel
 gameWindow::gameWindow(std::string lvl_ptr,int _difficultySelected, unsigned int numLines)
     : running(true), xPressed(false), difficultySelected(_difficultySelected) {
 
@@ -27,6 +27,7 @@ gameWindow::~gameWindow() {
     delete current_game;
 }
 
+// Zeichnet alle Elemente des Spiels auf die virtuelle Konsole (wird rundenbasiert aufgerufen)
 void gameWindow::drawCurrentState() {
     // draw  to console - overview of stats
     int buffer = 6;
@@ -81,7 +82,7 @@ void gameWindow::exitGame() {
         }
 }
 
-
+// Rundenbasierte Funktion
 void gameWindow::onRefresh() {
     clear();
     drawCurrentState();
@@ -121,6 +122,8 @@ void gameWindow::onRefresh() {
 
 }
 
+// Wird sowohl beim Tot von Pacman als auch beim Bestehen des Levels aufgerufen, str enthält je nachdem eine unterschiedliche
+// Nachricht für den Spieler. Beendet das Spiel und schließt das aktuelle gameWindow 
 void gameWindow::endGame(QString &str) {
     running = false;
     QMessageBox qMB(this);

@@ -105,10 +105,12 @@ double smartAlien::getDistance(int x_player, int y_player, int x_alien, int y_al
     return (std::sqrt(sum));
 }
 
+// hilfscontainer der eine Distanz als double und die dazugehörige Richtung speichert
 container::container(double _distance, char _direction)
     : distance(_distance), direction(_direction){}
 
 
+// Sortiert einen Vektor aus Hilfscontainern aufsteigend nach ihrer Distanz zum Spieler
 void bubbleSortContainerVector(std::vector <container> &distances) {
     unsigned int n = distances.size();
     char    tempChar;
@@ -131,7 +133,7 @@ void bubbleSortContainerVector(std::vector <container> &distances) {
 }
 
 char smartAlien::getDirection(int xPlayer, int yPlayer) {
-    // speichert die Distanzen zwischen Alien und Spieler für alle 4 Richtungen in einem Hilfskonstrukt
+    // speichert die Distanzen zwischen Alien und Spieler für alle 4 Richtungen in Hilfskonstrukt
     container cUp      = container(getDistance(xPlayer,yPlayer,getXPosition(),getYPosition()-1),'u');
     container cDown    = container(getDistance(xPlayer, yPlayer,getXPosition(),getYPosition()+1),'d');
     container cLeft    = container(getDistance(xPlayer, yPlayer,getXPosition()-1,getYPosition()),'l');

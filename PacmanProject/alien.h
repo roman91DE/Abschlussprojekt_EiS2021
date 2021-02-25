@@ -31,7 +31,7 @@ class Alien {
 // Aus der Aufgabenstellung ist mir nicht ganz klar geworden,
 // ob die dummen Aliens ebenfalls halb so schnell wie Pacman
 // laufen sollen? Ich habe es so implementiert, dass beide Arten
-// von Gegnern mit der halben Geschwindigkeit laufen
+// von Gegnern mit der gleichen Geschwindigkeit laufen
 // (...primär damit ich Level 3 schaffe...)
 class stupidAlien : public Alien {
     private:

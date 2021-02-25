@@ -4,6 +4,7 @@
 #include "map.h"
 
 
+// Erstellt ein Spielobjekt mit der übergebenen .txt. Datei, der gewählten Schwierigkeit (sowie der Anzahl von Zeilen bei custom maps)
 Game::Game(std::string filepathMap,int _difficultySelected, unsigned int numLines) : roundCount(0), score(0), total_pill_count(0) {
     map = new Map(filepathMap, numLines);
     char temp;
@@ -37,12 +38,13 @@ Game::Game(std::string filepathMap,int _difficultySelected, unsigned int numLine
     pillSound->setVolume(10000);
 }
 
+// checkt ob alle Pillen auf der Karte von Pacman eingesammelt wurden
 bool Game::level_complete() {
     if (score == total_pill_count) { return true; }
     else                           { return false; }
 }
 
-
+// gibt alle untergordneten Ressourcen wieder frei
 Game::~Game() {
     for (unsigned int i = 0; i < aliens.size(); i++) {
         delete aliens[i];
@@ -52,6 +54,7 @@ Game::~Game() {
     delete pillSound;
 }
 
+// checkt ob Pacman mit einem Alien kollidiert ist
 bool Game::isAlive() {
     for (unsigned int i = 0; i < aliens.size(); i++) {
         if ( (aliens[i]->getXPosition() == player->getXPosition()) &&
@@ -61,7 +64,7 @@ bool Game::isAlive() {
     return true;
 }
 
-
+// rundenbasierte Updates für Zähler, PillScore und Soundeffekte
 void Game::update() {
     roundCount++;
     if (map->vec[player->getYPosition()][player->getXPosition()] == '.') {
@@ -71,6 +74,7 @@ void Game::update() {
     }
 }
 
+// Bewegt Pacman, wenn möglich, in die vom User angegebene Richtung
 void Game::movePlayer(int userInput) {
     int x = player->getXPosition();
     int y = player->getYPosition();
@@ -88,7 +92,7 @@ void Game::movePlayer(int userInput) {
     }
 }
 
-
+// Bewegt Aliens (ruft die Unterfunktion getDirection() auf um unterschiedliches Verhalten je nach Alien Unterklasse zu erreichen)
 void Game::moveAliens(int xPlayer, int yPlayer) {
     for (unsigned int i = 0; i < aliens.size(); i++) {
         aliens[i]->move(xPlayer, yPlayer);

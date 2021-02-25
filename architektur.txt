@@ -3,8 +3,8 @@
 
 Beim Programmieren des Spiels habe ich einen objektorientierten Ansatz verfolgt um dieses möglichst einfach stufenweise nachrüsten zu können.
 Die Kernelemente des Spiels bilden die 3 Klassen: Player, Alien und Map. Player und Alien enthalten dabei stets die aktuelle Koordinaten der jeweiligen Spielfigur
-sowie eine move Funktion (+ mehrere move-Unterfunktionen) um sich auf dem Spielfeld zu bewegen. Da es verschiedene Unterarten von Aliens geben soll (eigentlich sind es ja Geister aber das ist mir zuspät 
-aufgefallen...) ) habe ich eine abstrakte Basis Klasse Alien angelegt, die als Interface für alle Unterklassen benutzt wird. Die Basisklasse stellt alle Grundfunktionen 
+sowie eine move Funktion (+ mehrere move-Unterfunktionen) um sich auf dem Spielfeld zu bewegen. Da es verschiedene Unterarten von Aliens geben soll 
+(eigentlich sind es ja Geister aber das ist mir zuspät aufgefallen...), habe ich eine abstrakte Basis Klasse Alien angelegt, die als Interface für alle Unterklassen benutzt wird. Die Basisklasse stellt alle Grundfunktionen 
 für die Bewegung und get Methoden sowie einen Konstruktor bereit und steuert die Bewegungshäufigkeit für unterschiedliche Schwierigkeitsstufen. Um verschiedenartige Bewegungsmuster 
 zwischen dummen und schlauen Aliens zu erreichen habe ich eine virtuelle Methode getDirection() verwendet. Diese ermittelt die Richtung für den nächsten Zug 
 über einen dynamischen Dispatch individuell für die beiden Alien Unterklassen um das gewünschte Verhalten für die Unterklassen zu erreichen (dumme Aliens per Zufall, 
@@ -15,7 +15,8 @@ std::vector aus chars zu erstellen. Über diesen Aufbau ist es dann einfach gewe
 Die zweite wichtige Funktion der map Klasse ist die isFree(x,y) Methode mit der geprüft wird, ob ein Koordinate innerhalb der Karte begehbar ist oder nicht.
 
 Alle 3 Klassen Player, Alien und Map werden abschließend in einer wrapper Klasse Game bebündelt um eine bessere Übersicht und Steuerung der einzelnen Bestandteile
-zu ermöglichen. Die Game Klasse ruft dafür in jeder Runde über die update() Funktion die rundenbasierten Funktionen der Spielfiguren auf. Zusätzlich werden Punkte und Zeit gezählt,
+zu ermöglichen. Die Game Klasse ruft dafür in jeder Runde über die update() Funktion die rundenbasierten Funktionen der Spielfiguren auf, die weitere Spiellogik wird von der gameWindow Klasse 
+erledigt. Zusätzlich werden Punkte und Zeit gezählt,
 geprüft ob der Spieler in einer Runde gestorben ist und ob das Level erfolgreich abgeschlossen wurde.
 
 Reflektion: Ich halte den Design Entwurf für gelungen, das nachträgliche Einbauen von Zusatzfeaturen (z.B. Schwierigkeit, andere Karten einlesen,

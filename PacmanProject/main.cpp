@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
 
 
-// skip main menu
+// skip main menu - directly load level 1
 //// ---------------
 //int main(int argc, char *argv[])
 //{

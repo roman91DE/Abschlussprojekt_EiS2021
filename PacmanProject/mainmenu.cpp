@@ -5,7 +5,9 @@
 #include <QInputDialog>
 #include <QComboBox>
 
+// Konstruktor für GUI Hauptmenü
 mainMenu::mainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainMenu), difficulty(1){
+    gameWindowPtr = nullptr;
     ui->setupUi(this);
     ui->difficultySelection->setCurrentIndex(1);
     // setting relative paths for standard levels
@@ -31,12 +33,14 @@ mainMenu::mainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::mainMenu),
     ui->quitButton->setToolTip("Quit Pacman");
 }
 
+// Dekonstruktor für Hauptmenü
 mainMenu::~mainMenu(){
     delete ui;
-    delete gameWindowPtr;
+    if (gameWindowPtr != nullptr)
+        delete gameWindowPtr;
 }
 
-
+// die vier folgenden Slots werden genutzt um Level 1 bis sowie ein custom Level zu starten
 void mainMenu::slotStartLevel1() {
     gameWindowPtr = new gameWindow(lvl1_path, difficulty);
     gameWindowPtr->show();
@@ -73,6 +77,7 @@ void mainMenu::slotStartCustomLevel() {
     gameWindowPtr->show();
 }
 
+// Setzt den Wert aus DropDown Menü als gewählte Schwierigkeit
 void mainMenu::slotSetDifficulty(int) {
     this->difficulty = ui->difficultySelection->currentIndex();
 }
