@@ -54,11 +54,9 @@ Beide Vorgehensweisen funktionieren bei mir problemlos (Karten werden gefunden u
 
    Link3: https://doc.qt.io/qt-5/resources.html
 
-Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen und die korrekte Einbindung von dem Qt multimedia Module in die .pro Datei gelernt.
+Hilfreich für die Umsetzung war dabei zusätzlich das folgende Videotutorial, aus diesem Video habe ich die Idee die Idee übernommen, meine .wav files als qrsc Directory aufzunehmen. Die genaue Implementierung habe ich im Anschluss selbstständig vorgenommen.
 
 C++ Qt Game Tutorial 7 - Adding Sound Effects/Music - Kanal: Abdullah Aghazadah - Link: https://www.youtube.com/watch?v=DS7CDpIrwN4
-
-Auch hier ist meine Lösung aber eigenständig erarbeitet um das Problem der Deanonymisierung durch absolute Dateipfade zu umgehen. 
 
 
   Ich habe an keiner Stelle Code wörtlich aus anderen Quellen übernommen, das komplette Design ist eigenständig ausgedacht, programmiert und getestet. Zur Hilfe habe ich mit den folgenden Tools gearbeitet:
